@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="DYEp4mPmDlNA1V-YT4uu" name="Page-1">
-        <mxGraphModel dx="2190" dy="1924" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1201" dy="1316" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -230,8 +230,11 @@
                         <mxPoint x="-40" y="40" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="67" value="Benjamin K :)" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-                    <mxGeometry x="310" y="680" width="200" height="30" as="geometry"/>
+                <mxCell id="68" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://mosportgroup.ch/pluginAppObj/pluginAppObj_102_15/111-01.jpg;" vertex="1" parent="1">
+                    <mxGeometry x="150.3" y="680" width="119.7" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="69" value="Benjamin sin Töff:" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="200" y="680" width="60" height="30" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
