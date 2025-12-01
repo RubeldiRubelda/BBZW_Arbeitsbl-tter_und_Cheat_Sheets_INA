@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inline JavaScript Example</title>
+</head>
+<body>
+
+    <script>
+    </script>
+
+    <h1>Inline JavaScript Vorlage</h1>
+    <p>Das ist eine einfache Vorlage für Inline-JavaScript.</p>
+    <p>Damit du die Ausgabe der Konsole einsehen kannst, öffne die Entwicklertools,   
+    indem du mit der rechten Maustaste auf diese Seite klickst, und dann auf Untersuchen klickst.</p>
+
+    <script>
+      // Funktion, um Benutzereingaben zu verarbeiten und mathematische Operationen auszuführen
+      function processInput() {
+        // Benutzereingabe abfragen
+        const input = prompt("Bitte geben Sie eine Zahl ein:");
+
+        // Eingabe in eine Zahl umwandeln
+        const number = parseFloat(input);
+
+        // Überprüfen, ob die Eingabe eine gültige Zahl ist
+        if (isNaN(number)) {
+          console.error("Ungültige Eingabe. Bitte geben Sie eine Zahl ein.");
+          return;
+        }
+
+        // Mathematische Operationen durchführen
+        const square = number * number; // Quadrat der Zahl
+        const squareRoot = Math.sqrt(number); // Quadratwurzel der Zahl
+        const doubled = number * 2; // Verdoppelte Zahl
+
+        // Ergebnisse in der Konsole ausgeben
+        console.log(`Eingegebene Zahl: ${number}`);
+        console.log(`Quadrat: ${square}`);
+        console.log(`Quadratwurzel: ${squareRoot}`);
+        console.log(`Verdoppelt: ${doubled}`);
+      }
+
+      // Funktion aufrufen
+      processInput();
+    </script>
+    <script>
+      // Teil 1 – Benutzereingaben
+      function getUserInputs() {
+        // Benutzer nach zwei Zahlen fragen
+        const input1 = prompt("Bitte geben Sie die erste Zahl ein:");
+        const input2 = prompt("Bitte geben Sie die zweite Zahl ein:");
+
+        // Eingaben in Zahlen umwandeln
+        const number1 = Number(input1);
+        const number2 = Number(input2);
+
+        // Beide Werte in der Konsole ausgeben
+        console.log(`Erste Zahl: ${number1}`);
+        console.log(`Zweite Zahl: ${number2}`);
+      }
+
+      // Funktion aufrufen
+      getUserInputs();
+    </script>
+    <script>
+      // Teil 2 – Mathematische Funktionen
+
+      // Funktion zur Addition
+      function add(a, b) {
+        return a + b;
+      }
+
+      // Funktion zur Subtraktion
+      function subtract(a, b) {
+        return a - b;
+      }
+
+      // Funktion zur Multiplikation
+      function multiply(a, b) {
+        return a * b;
+      }
+
+      // Erweiterte Funktion zur Division mit Fehlerbehandlung
+      function divide(a, b) {
+        if (b === 0) {
+          return "Fehler: Division durch 0 nicht möglich!";
+        }
+        return a / b;
+      }
+    </script>
+    <script>
+      // Teil 3 – Alle Berechnungen ausgeben
+      function calculateAndLogResults() {
+        // Benutzer nach zwei Zahlen fragen
+        const input1 = prompt("Bitte geben Sie die erste Zahl ein:");
+        const input2 = prompt("Bitte geben Sie die zweite Zahl ein:");
+
+        // Eingaben in Zahlen umwandeln
+        const number1 = Number(input1);
+        const number2 = Number(input2);
+
+        // Überprüfen, ob die Eingaben gültige Zahlen sind
+        if (isNaN(number1) || isNaN(number2)) {
+          console.error("Ungültige Eingabe. Bitte geben Sie zwei Zahlen ein.");
+          return;
+        }
+
+        // Berechnungen durchführen
+        const additionResult = add(number1, number2);
+        const subtractionResult = subtract(number1, number2);
+        const multiplicationResult = multiply(number1, number2);
+        const divisionResult = divide(number1, number2);
+
+        // Ergebnisse in der Konsole ausgeben
+        console.log(`Addition: ${additionResult}`);
+        console.log(`Subtraction: ${subtractionResult}`);
+        console.log(`Multiplication: ${multiplicationResult}`);
+        console.log(`Division: ${divisionResult}`);
+      }
+
+      // Funktion aufrufen
+      calculateAndLogResults();
+    </script>
+</body>
+</html>
