@@ -19,9 +19,3 @@ NUR DATEIEN HOCHLADEN, DIE DU SELBER ERSTELLT HAST (bzw. du Rechte hast)
 
 
 ---------------------------------------------------------------------
-
-
-# Erklärung zur Bat-Datei: 
-
-Die Bat-Datei im Root-Verzeichnis ist dafür da um Dateien in einen Ordner zu legen der den selben Namen hat und am selben Speciherort ist wie die Datei. 
-Einfach di gewünschte Datei auf die Bat-Datei ziehen und das wars.
