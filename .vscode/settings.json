@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^Move-Item -Path \"c:\\\\Users\\\\benja\\\\Documents\\\\_BBZWgithubREPOSITORY\\\\BBZW_Arbeitsbl-tter_und_Cheat_Sheets_INA2025\\\\1\\.LJ\\\\M319\\\\\\*\" -Destination \"c:\\\\Users\\\\benja\\\\Documents\\\\_BBZWgithubREPOSITORY\\\\BBZW_Arbeitsbl-tter_und_Cheat_Sheets_INA2025\\\\1\\.LJ\\\\SEMESTER 1\\\\M319\\\\\" -Force$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}

@@ -1,0 +1,36 @@
+Aufgabe 7: Übertrag nach C#
+=============================
+
+Gewählter PAP: Aufgabe 3 - Verzweigungen (Punktzahl-Bewertung)
+
+Textbeschreibung des Programmablaufs:
+--------------------------------------
+
+1. Das Programm startet
+
+2. Der Benutzer wird aufgefordert, eine Punktzahl einzugeben
+   - Die Eingabe wird eingelesen und in eine Variable gespeichert
+
+3. Das Programm prüft, ob die eingegebene Punktzahl >= 50 ist
+   - Dies ist eine einfache Bedingung (if-Abfrage)
+
+4. Je nach Ergebnis der Prüfung:
+   a) Wenn die Punktzahl >= 50 ist:
+      - Gebe "bestanden" aus
+   
+   b) Wenn die Punktzahl < 50 ist:
+      - Gebe "nicht bestanden" aus
+
+5. Das Programm endet
+
+
+Implementierung in C#:
+----------------------
+
+Die Umsetzung erfolgt in der Datei "07_Punktzahl.cs"
+
+Verwendete Konzepte:
+- Console.ReadLine() für die Eingabe
+- int.Parse() zur Konvertierung von String zu Integer
+- if-else-Verzweigung für die Entscheidungslogik
+- Console.WriteLine() für die Ausgabe
