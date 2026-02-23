@@ -1,0 +1,12 @@
+name: 🔐 Rechte Anfordern
+description: Rechte zum Upload von Dateien per Push anfordern.
+title: "[Rechte Anfordern] "
+labels: ["📦 Rechte Anfordern"]
+body:
+  - type: textarea
+    id: suchst
+    attributes:
+      label: Wieso benötigst du diese Rechte?
+      placeholder: Ich lade gelegentlich Dateien hoch...
+    validations:
+      required: true
