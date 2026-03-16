@@ -1,0 +1,134 @@
+USE Bibliothek;
+GO
+
+-- 3 Verlage
+
+SELECT * FROM Verlag;
+
+INSERT INTO Verlag (Name, Hauptsitz) VALUES ('Diogenes Verlag', 'Zürich');
+INSERT Verlag VALUES ('dtv', 'München');
+INSERT INTO Verlag (Name) VALUES ('Suhrkamp');
+INSERT INTO Verlag (Name, Hauptsitz) VALUES 
+('Fischer Verlag', 'Frankfurt'),
+('Reaclam', 'Stuttgart'),
+('Kein & Aber Verlag', 'Zürich');
+GO
+SELECT * FROM Verlag;
+GO
+
+-- 4 Kategorien
+
+SELECT * FROM Kategorie;
+GO
+
+INSERT INTO Kategorie (Bezeichnung, Beschreibung) VALUES 
+('Fantasy', 'Fantastische Welten, Magie, Epen'),
+('Satire', 'Humor, Gesellschaftskritik, Absurdes'),
+('Dystopie', 'Unterdrückung, Totalitarismus, Zukunftsvisionen'),
+('Klassiker', NULL),
+('Philosophie', 'Grundfragen menschlichen Denkens'),
+('Drama', 'Theaterliteratur, Tragödien, Konflikte');
+GO
+
+-- 5 Autoren
+
+SELECT * FROM Autor;
+GO
+
+INSERT INTO Autor (Vorname, Nachname, Geburtsdatum) VALUES 
+('Neil', 'Gaiman', '1960-11-10'),
+('Terry', 'Pratchett', '1948-04-28'),
+('John Ronald Reuel', 'Tolkien', '1892-01-03'),
+('George', 'Orwell', '1903-06-25'),
+('Platon', '', NULL),
+('Antoine', 'de Saint-Exupéry', '1900-06-29'),
+('William', 'Shakespeare', '1564-04-26');
+GO
+
+
+-- 6 Mitarbeiter
+
+SELECT * FROM Mitarbeiter_in;
+GO
+
+INSERT INTO Mitarbeiter_in (Vorname, Nachname, Funktion) VALUES
+('Tom', 'Lüthi', 'Bibliothekar/in'),
+('Dominique', 'Aegerter', 'Bibliothekar/in'),
+('Marc', 'Márquez', 'Lernende/r'),
+('Valentino', 'Rossi', 'Leiter/in'),
+('Fabio', 'Quartararo', 'Lernende/r');
+GO
+
+-- 7 Kunden
+
+INSERT INTO Kunde (Vorname, Nachname) VALUES
+('Max', 'Verstappen'),
+('Lewis', 'Hamilton');
+GO
+
+INSERT INTO Kunde (Vorname, Nachname, Adresse, PLZ, Ort, Land) VALUES
+('Charles', 'Leclerc', 'Marktplatz 4', '6210', 'Sursee', 'Schweiz'),
+('Lando', 'Norris', 'Seestrasse 8', '6204', 'Sempach', 'Schweiz'),
+('Carlos', 'Sainz', 'Dorfstrasse 11', '6208', 'Oberkirch', 'Schweiz'),
+('George', 'Russell', 'Hauptstrasse 9', '6252', 'Dagmersellen', 'Schweiz'),
+('Fernando', 'Alonso', 'Schulhausstrasse 7', '6206', 'Neuenkirch', 'Schweiz'),
+('Sergio', 'Pérez', 'Kirchweg 5', '6130', 'Willisau', 'Schweiz');
+GO
+
+SELECT * FROM Kunde;
+GO
+
+-- 8 Bücher
+
+SELECT Verlagsnummer FROM Verlag WHERE Name = 'Kein & Aber Verlag';
+GO
+
+INSERT INTO Buch (ISBN, Titel, Erscheinungsjahr, fk_Verlag_ID) VALUES
+('9780552176453', 'Good Omens', 1990, (SELECT Verlagsnummer FROM Verlag WHERE Name = 'Kein & Aber Verlag'));
+GO
+
+INSERT INTO Buch (ISBN, Titel, Erscheinungsjahr, fk_Verlag_ID) VALUES
+('9780261102385', 'Der Herr der Ringe', 1954, (SELECT Verlagsnummer FROM Verlag WHERE Name = 'dtv')),
+('9780451524935', '1984', 1949, (SELECT Verlagsnummer FROM Verlag WHERE Name = 'Suhrkamp')),
+('9783150000014', 'Die Republik', -380, (SELECT Verlagsnummer FROM Verlag WHERE Name = 'Reaclam')),
+('9780156012195', 'Der kleine Prinz', 1943, (SELECT Verlagsnummer FROM Verlag WHERE Name = 'Fischer Verlag')),
+('9783150000021', 'Romeo und Julia', 1597, (SELECT Verlagsnummer FROM Verlag WHERE Name = 'Reaclam')),
+('9783150000038', 'Hamlet', 1603, (SELECT Verlagsnummer FROM Verlag WHERE Name = 'Reaclam')),
+('9783150000045', 'Ein Sommernachtstraum', 1595, (SELECT Verlagsnummer FROM Verlag WHERE Name = 'Reaclam'));
+GO
+
+SELECT * FROM Buch;
+GO
+
+-- 10 Bücher mit Kategorien verknüpfen
+
+SELECT
+	(SELECT Buch_ID FROM Buch WHERE Titel = 'Good Omens') AS Buch_ID,
+	(SELECT Kategorie_ID FROM Kategorie WHERE Bezeichnung = 'Satire') AS Kategorie_ID;
+GO
+
+INSERT INTO Buch_Kategorie (fk_Buch_ID, fk_Kategorie_ID) VALUES
+(
+	(SELECT Buch_ID FROM Buch WHERE Titel = 'Good Omens'),
+	(SELECT Kategorie_ID FROM Kategorie WHERE Bezeichnung = 'Satire')
+);
+GO
+
+INSERT INTO Buch_Kategorie (fk_Buch_ID, fk_Kategorie_ID) VALUES
+((SELECT Buch_ID FROM Buch WHERE Titel = 'Der Herr der Ringe'), (SELECT Kategorie_ID FROM Kategorie WHERE Bezeichnung = 'Fantasy')),
+((SELECT Buch_ID FROM Buch WHERE Titel = '1984'), (SELECT Kategorie_ID FROM Kategorie WHERE Bezeichnung = 'Dystopie')),
+((SELECT Buch_ID FROM Buch WHERE Titel = 'Die Republik'), (SELECT Kategorie_ID FROM Kategorie WHERE Bezeichnung = 'Philosophie')),
+((SELECT Buch_ID FROM Buch WHERE Titel = 'Der kleine Prinz'), (SELECT Kategorie_ID FROM Kategorie WHERE Bezeichnung = 'Klassiker')),
+((SELECT Buch_ID FROM Buch WHERE Titel = 'Romeo und Julia'), (SELECT Kategorie_ID FROM Kategorie WHERE Bezeichnung = 'Klassiker')),
+((SELECT Buch_ID FROM Buch WHERE Titel = 'Romeo und Julia'), (SELECT Kategorie_ID FROM Kategorie WHERE Bezeichnung = 'Drama')),
+((SELECT Buch_ID FROM Buch WHERE Titel = 'Hamlet'), (SELECT Kategorie_ID FROM Kategorie WHERE Bezeichnung = 'Klassiker')),
+((SELECT Buch_ID FROM Buch WHERE Titel = 'Hamlet'), (SELECT Kategorie_ID FROM Kategorie WHERE Bezeichnung = 'Drama')),
+((SELECT Buch_ID FROM Buch WHERE Titel = 'Ein Sommernachtstraum'), (SELECT Kategorie_ID FROM Kategorie WHERE Bezeichnung = 'Drama'));
+GO
+
+SELECT *
+FROM Buch_Kategorie bk
+JOIN Buch b ON b.Buch_ID = bk.fk_Buch_ID
+JOIN Kategorie k ON k.Kategorie_ID = bk.fk_Kategorie_ID; 
+GO
+
