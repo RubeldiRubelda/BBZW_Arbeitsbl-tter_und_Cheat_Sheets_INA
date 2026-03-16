@@ -160,3 +160,177 @@ GO
 
 -- 11 Reservationen erfinden und einfügen
 
+INSERT INTO Buch_Kunde (fk_Buch_ID, fk_Kunde_ID, Enddatum) VALUES
+((SELECT Buch_ID FROM Buch WHERE Titel = 'Good Omens'), (SELECT Kundennummer FROM Kunde WHERE Nachname = 'Hamilton'), DATEADD(DAY, 5, GETDATE())),
+((SELECT Buch_ID FROM Buch WHERE Titel = 'Der Herr der Ringe'), (SELECT Kundennummer FROM Kunde WHERE Nachname = 'Verstappen'), DATEADD(DAY, 2, GETDATE()));
+GO
+
+SELECT * FROM Buch_Kunde;
+GO
+
+
+-- 12 Ausleihe/n erfinden und einfügen
+
+INSERT INTO Ausleihe (fk_Buch_ID, fk_Kunde_ID, fk_Mitarbeiter_in_ID, Enddatum) VALUES
+(
+	(SELECT Buch_ID FROM Buch WHERE ISBN = '9780451524935'),
+	(SELECT Kundennummer FROM Kunde WHERE Nachname = 'Leclerc'),
+	(SELECT Personalnummer FROM Mitarbeiter_in WHERE Nachname = 'Lüthi'),
+	DATEADD(DAY, 14, CAST(GETDATE() AS DATE))
+);
+GO
+
+INSERT INTO Ausleihe (fk_Buch_ID, fk_Kunde_ID, fk_Mitarbeiter_in_ID, Startdatum, Enddatum) VALUES
+(
+	(SELECT Buch_ID FROM Buch WHERE ISBN = '9780451524935'),
+	(SELECT Kundennummer FROM Kunde WHERE Nachname = 'Leclerc'),
+	(SELECT Personalnummer FROM Mitarbeiter_in WHERE Nachname = 'Lüthi'),
+	DATEADD(DAY, 14, CAST(GETDATE() AS DATE)),
+	DATEADD(DAY, 28, CAST(GETDATE() AS DATE))
+);
+GO
+
+SELECT *
+FROM Ausleihe;
+GO
+
+
+-- 13 Strafgebühr auf 0 setzen
+
+SELECT *
+FROM Ausleihe;
+GO
+
+UPDATE Ausleihe SET Strafgebehr = 0;
+GO
+
+SELECT *
+FROM Ausleihe;
+GO
+
+
+-- 14 Ausleihe Verlängern
+
+SELECT * FROM Ausleihe;
+GO
+
+UPDATE Ausleihe SET Enddatum = DATEADD(DAY, 7, Enddatum);
+GO
+
+SELECT * FROM Ausleihe;
+GO
+
+
+-- 15 Erscheinungsjahr präzisieren
+
+SELECT *
+FROM Buch
+WHERE ISBN = '9783150000014';
+GO
+
+UPDATE Buch
+SET Erscheinungsjahr = -375
+WHERE ISBN = '9783150000014';
+GO
+
+SELECT *
+FROM Buch
+WHERE ISBN = '9783150000014';
+GO
+
+
+-- 16 Beschreibung ergänzen
+
+SELECT *
+FROM Kategorie
+WHERE Bezeichnung = 'Klassiker';
+GO
+
+UPDATE Kategorie
+SET Beschreibung = 'Weltliteratur - bekannt über Generationen'
+WHERE Bezeichnung = 'Klassiker';
+GO
+
+SELECT *
+FROM Kategorie
+WHERE Bezeichnung = 'Klassiker';
+GO
+
+
+-- 17 Hauptsitz ergänzen
+
+SELECT * FROM Verlag;
+GO
+
+UPDATE Verlag
+SET Hauptsitz = 'Berlin'
+WHERE Name = 'Suhrkamp';
+GO
+
+SELECT * FROM Verlag;
+GO
+
+
+-- 18 Adressen aktualisieren
+
+SELECT * FROM Kunde;
+GO
+
+UPDATE Kunde
+SET Adresse = 'Bahnhofstrasse 25', PLZ = '6210', Ort = 'Sursee', Land = 'Schweiz'
+WHERE Kundennummer = 1;
+
+UPDATE Kunde
+SET Adresse = 'Bahnhofstrasse 25', PLZ = '6210', Ort = 'Sursee', Land = 'Schweiz'
+WHERE Nachname = 'Hamilton'
+AND Vorname = 'Lewis';
+
+SELECT * FROM Kunde;
+GO
+
+-- 19 Mitarbeiter befördern
+
+SELECT * FROM Mitarbeiter_in;
+GO
+
+SELECT COUNT(*) FROM Mitarbeiter_in
+WHERE Nachname = 'Lüthi'
+AND Vorname = 'Tom';
+GO
+
+UPDATE Mitarbeiter_in
+SET Funktion = 'Stv. Leiter/in'
+WHERE Nachname = 'Lüthi'
+AND Vorname = 'Tom';
+GO
+
+SELECT * FROM Mitarbeiter_in;
+GO
+
+
+-- 20 Reservation beenden
+
+SELECT *
+FROM Buch_Kunde
+GO 
+
+UPDATE Buch_Kunde
+SET Enddatum = DATEADD(DAY, -1, CAST(GETDATE() AS DATE))
+WHERE fk_Kunde_ID = (
+	SELECT Kundennummer
+	FROM Kunde
+	WHERE Vorname = 'Max' AND Nachname = 'Verstappen'
+)
+AND fk_Buch_ID = (
+	SELECT Buch_ID
+	FROM Buch
+	WHERE Titel = 'Good Omens'
+)
+AND Enddatum >= CAST(GETDATE() AS DATE);
+GO
+
+SELECT *
+FROM Buch_Kunde;
+GO
+
+
