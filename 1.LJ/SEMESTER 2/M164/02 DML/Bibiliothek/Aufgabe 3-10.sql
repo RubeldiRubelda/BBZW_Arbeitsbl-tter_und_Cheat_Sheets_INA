@@ -100,6 +100,31 @@ GO
 SELECT * FROM Buch;
 GO
 
+-- 9 Bücher mit Autoren verknüpfen
+
+SELECT
+	(SELECT Buch_ID FROM Buch WHERE ISBN = '9780261102385') AS Buch_ID,
+	(SELECT Autor_ID FROM Autor WHERE Nachname = 'Tolkien') AS Autor_ID;
+GO
+
+INSERT INTO [dbo].[Buch_Autor] (fk_Buch_ID, fk_Autor_ID) VALUES
+((SELECT Buch_ID FROM Buch WHERE ISBN = '9780552176453'), (SELECT Autor_ID FROM Autor WHERE Nachname = 'Gaiman')),
+((SELECT Buch_ID FROM Buch WHERE ISBN = '9780552176453'), (SELECT Autor_ID FROM Autor WHERE Nachname = 'Pratchett')),
+((SELECT Buch_ID FROM Buch WHERE ISBN = '9780261102385'), (SELECT Autor_ID FROM Autor WHERE Nachname = 'Tolkien')),
+((SELECT Buch_ID FROM Buch WHERE ISBN = '9780451524935'), (SELECT Autor_ID FROM Autor WHERE Nachname = 'Orwell')),
+((SELECT Buch_ID FROM Buch WHERE ISBN = '9783150000014'), (SELECT Autor_ID FROM Autor WHERE Nachname = '')),
+((SELECT Buch_ID FROM Buch WHERE ISBN = '9780156012195'), (SELECT Autor_ID FROM Autor WHERE Nachname = 'de Saint-Exupéry')),
+((SELECT Buch_ID FROM Buch WHERE ISBN = '9783150000021'), (SELECT Autor_ID FROM Autor WHERE Nachname = 'Shakespeare')),
+((SELECT Buch_ID FROM Buch WHERE ISBN = '9783150000038'), (SELECT Autor_ID FROM Autor WHERE Nachname = 'Shakespeare')),
+((SELECT Buch_ID FROM Buch WHERE ISBN = '9783150000045'), (SELECT Autor_ID FROM Autor WHERE Nachname = 'Shakespeare'));
+GO
+
+SELECT *
+FROM [dbo].[Buch_Autor] ba
+JOIN Buch b ON b.Buch_ID = ba.fk_Buch_ID
+JOIN Autor a ON a.Autor_ID = ba.fk_Autor_ID;
+GO
+
 -- 10 Bücher mit Kategorien verknüpfen
 
 SELECT
@@ -107,14 +132,14 @@ SELECT
 	(SELECT Kategorie_ID FROM Kategorie WHERE Bezeichnung = 'Satire') AS Kategorie_ID;
 GO
 
-INSERT INTO Buch_Kategorie (fk_Buch_ID, fk_Kategorie_ID) VALUES
+INSERT INTO [dbo].[Buch_Kategorie] (fk_Buch_ID, fk_Kategorie_ID) VALUES
 (
 	(SELECT Buch_ID FROM Buch WHERE Titel = 'Good Omens'),
 	(SELECT Kategorie_ID FROM Kategorie WHERE Bezeichnung = 'Satire')
 );
 GO
 
-INSERT INTO Buch_Kategorie (fk_Buch_ID, fk_Kategorie_ID) VALUES
+INSERT INTO [dbo].[Buch_Kategorie] (fk_Buch_ID, fk_Kategorie_ID) VALUES
 ((SELECT Buch_ID FROM Buch WHERE Titel = 'Der Herr der Ringe'), (SELECT Kategorie_ID FROM Kategorie WHERE Bezeichnung = 'Fantasy')),
 ((SELECT Buch_ID FROM Buch WHERE Titel = '1984'), (SELECT Kategorie_ID FROM Kategorie WHERE Bezeichnung = 'Dystopie')),
 ((SELECT Buch_ID FROM Buch WHERE Titel = 'Die Republik'), (SELECT Kategorie_ID FROM Kategorie WHERE Bezeichnung = 'Philosophie')),
@@ -127,8 +152,11 @@ INSERT INTO Buch_Kategorie (fk_Buch_ID, fk_Kategorie_ID) VALUES
 GO
 
 SELECT *
-FROM Buch_Kategorie bk
+FROM [dbo].[Buch_Kategorie] bk
 JOIN Buch b ON b.Buch_ID = bk.fk_Buch_ID
 JOIN Kategorie k ON k.Kategorie_ID = bk.fk_Kategorie_ID; 
 GO
+
+
+-- 11 Reservationen erfinden und einfügen
 
