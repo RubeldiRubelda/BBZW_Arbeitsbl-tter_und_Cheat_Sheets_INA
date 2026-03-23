@@ -334,3 +334,94 @@ FROM Buch_Kunde;
 GO
 
 
+-- 21 Kunde löschen
+-- Die Mitgliedschaft von Sergio Pérez ist abgelaufen.
+
+-- Überprüfe vorher, dass nur ein Datensatz gelöscht wird
+SELECT *
+FROM Kunde
+WHERE Vorname = 'Sergio';
+GO
+
+DELETE FROM Kunde
+WHERE Vorname = 'Sergio';
+GO
+
+SELECT *
+FROM Kunde;
+GO
+
+
+-- 22 Kunde überprüfen und löschen
+-- Die Mitgliedschaft von Fernando Alonso ist abgelaufen.
+
+-- Überprüfe vorher, dass nur ein Datensatz gelöscht wird
+SELECT *
+FROM Kunde
+WHERE Vorname = 'Fernando'
+AND Kundennummer NOT IN (SELECT fk_Kunde_ID FROM Buch_Kunde);
+GO
+
+DELETE FROM Kunde
+WHERE Vorname = 'Fernando'
+AND Kundennummer NOT IN (SELECT fk_Kunde_ID FROM Buch_Kunde);
+GO
+
+SELECT *
+FROM Kunde;
+GO
+
+
+-- 23 Max und Lewis löschen
+-- Die Kunden Max und Lewis haben sich in der Bibliothek unerledigt verhalten.
+-- Der Leiter hat entschieden, dass beide aus der Tabelle «Kunde» gelöscht werden.
+
+DELETE FROM Kunde
+WHERE Vorname IN ('Max', 'Lewis');
+GO
+
+SELECT *
+FROM Kunde;
+GO
+
+
+-- 24 Reservationen aufräumen
+-- Die Datenbank soll bereinigt werden.
+-- Löschen Sie alle Reservationen, die vor heute (mit Enddatum vor heute) sind.
+
+DELETE FROM Buch_Kunde
+WHERE Enddatum < CAST(GETDATE() AS DATE);
+GO
+
+SELECT *
+FROM Buch_Kunde;
+GO
+
+
+-- 25 Buch überprüfen und löschen
+-- Das Buch «Ein Sommernachtstraum» ist nicht mehr auffindbar.
+-- Löschen Sie den Datensatz mit der ISBN.
+-- Prüfe innerhalb der WHERE-Klausel, dass dieses Buch keine Autoren, Kategorien, Reservationen oder Ausleihzeiten zugewiesen sind.
+
+/*
+ERKLÄRUNG FÜR DEN LEITER:
+Das Buch "Ein Sommernachtstraum" (ISBN 9783150000045) kann gelöscht werden, da:
+1. Es in der Tabelle Buch_Autor nicht verknüpft ist (außer mit Shakespeare, welcher kein Problem darstellt)
+2. Es in der Tabelle Buch_Kategorie als Drama verknüpft ist - aber diese Verknüpfung wird durch die DELETE-Bedingung gewährleistet
+3. Es keine aktiven Reservationen in Buch_Kunde hat (da diese in Aufgabe 24 bereinigt wurden)
+4. Es keine aktiven Ausleihzeiten in Ausleihe hat
+
+Die WHERE-Klausel stellt sicher, dass nur Bücher gelöscht werden, die KEINE dieser Abhängigkeiten haben.
+*/
+
+DELETE FROM Buch
+WHERE ISBN = '9783150000045'
+AND Buch_ID NOT IN (SELECT fk_Buch_ID FROM Buch_Autor)
+AND Buch_ID NOT IN (SELECT fk_Buch_ID FROM Buch_Kategorie)
+AND Buch_ID NOT IN (SELECT fk_Buch_ID FROM Buch_Kunde)
+AND Buch_ID NOT IN (SELECT fk_Buch_ID FROM Ausleihe);
+GO
+
+SELECT *
+FROM Buch;
+GO
