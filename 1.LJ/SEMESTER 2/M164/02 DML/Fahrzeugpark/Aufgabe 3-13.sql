@@ -1,427 +1,152 @@
-USE Bibliothek;
-GO
+USE Fahrzeugpark;
 
--- 3 Verlage
+-- 3 Mitarbeiter Einfügen
 
-SELECT * FROM Verlag;
+INSERT INTO Mitarbeiter (Nachname, Vorname) VALUES ('Cuche', 'Didier');
+INSERT INTO Mitarbeiter (Nachname, Vorname) VALUES ('Feuz', 'Beat');
+INSERT INTO Mitarbeiter (Nachname, Vorname) VALUES ('Figini', 'Michela');
+INSERT INTO Mitarbeiter (Nachname, Vorname) VALUES ('Gut-Behrami', 'Lara');
+INSERT INTO Mitarbeiter (Nachname, Vorname) VALUES ('Heinzer', 'Franz');
+INSERT INTO Mitarbeiter (Nachname, Vorname) VALUES ('Hess', 'Erika');
+INSERT INTO Mitarbeiter (Nachname, Vorname) VALUES ('Janka', 'Carlo');
+INSERT INTO Mitarbeiter (Nachname, Vorname) VALUES ('Müller', 'Peter');
+INSERT INTO Mitarbeiter (Nachname, Vorname) VALUES ('Nadig', 'Marie-Theres');
+INSERT INTO Mitarbeiter (Nachname, Vorname) VALUES ('Odermatt', 'Marco');
+INSERT INTO Mitarbeiter (Nachname, Vorname) VALUES ('Schneider', 'Vreni');
+INSERT INTO Mitarbeiter (Nachname, Vorname) VALUES ('Zurbriggen', 'Pirmin');
 
-INSERT INTO Verlag (Name, Hauptsitz) VALUES ('Diogenes Verlag', 'Zürich');
-INSERT Verlag VALUES ('dtv', 'München');
-INSERT INTO Verlag (Name) VALUES ('Suhrkamp');
-INSERT INTO Verlag (Name, Hauptsitz) VALUES 
-('Fischer Verlag', 'Frankfurt'),
-('Reaclam', 'Stuttgart'),
-('Kein & Aber Verlag', 'Zürich');
-GO
-SELECT * FROM Verlag;
-GO
-
--- 4 Kategorien
-
-SELECT * FROM Kategorie;
-GO
-
-INSERT INTO Kategorie (Bezeichnung, Beschreibung) VALUES 
-('Fantasy', 'Fantastische Welten, Magie, Epen'),
-('Satire', 'Humor, Gesellschaftskritik, Absurdes'),
-('Dystopie', 'Unterdrückung, Totalitarismus, Zukunftsvisionen'),
-('Klassiker', NULL),
-('Philosophie', 'Grundfragen menschlichen Denkens'),
-('Drama', 'Theaterliteratur, Tragödien, Konflikte');
-GO
-
--- 5 Autoren
-
-SELECT * FROM Autor;
-GO
-
-INSERT INTO Autor (Vorname, Nachname, Geburtsdatum) VALUES 
-('Neil', 'Gaiman', '1960-11-10'),
-('Terry', 'Pratchett', '1948-04-28'),
-('John Ronald Reuel', 'Tolkien', '1892-01-03'),
-('George', 'Orwell', '1903-06-25'),
-('Platon', '', NULL),
-('Antoine', 'de Saint-Exupéry', '1900-06-29'),
-('William', 'Shakespeare', '1564-04-26');
+SELECT * FROM Mitarbeiter;
 GO
 
 
--- 6 Mitarbeiter
+-- 4 Fahrzeuge Einfügen
 
-SELECT * FROM Mitarbeiter_in;
+INSERT INTO Fahrzeug (Marke, Typ, Neupreis, Jahrgang, Occasion) VALUES 
+('Ford', 'Model T', 825.00, 1908, 0),
+('Volkswagen', 'Käfer', 5000.00, 1938, 1),
+('Chevrolet', 'Corvette C1', 3500.00, 1953, 1),
+('Mercedes-Benz', '300 SL Flügeltürer', 29000.00, 1954, 1),
+('Mini', 'Mini Cooper', 497.00, 1959, 1),
+('Jaguar', 'E-Type', 2250.00, 1961, 1),
+('Ferrari', '250 GTO', 18000.00, 1962, 0),
+('Porsche', '911', 14500.00, 1964, 1),
+('Ford', 'Mustang', 2368.00, 1964, 0),
+('Lamborghini', 'Miura', 20000.00, 1966, 0),
+('Toyota', 'Corolla (erste Generation)', 1100.00, 1966, 1),
+('Toyota', 'Prius (erste Generation)', 35000.00, 1997, 0);
+
+SELECT * FROM Fahrzeug;
+
+
+-- 5 Mitarbeiter und Fahrzeuge verknüpfen
+
+SELECT * FROM Fahrzeug;
+
+UPDATE Fahrzeug 
+SET fk_Mitarbeiter_ID = (SELECT Mitarbeiter_ID FROM Mitarbeiter WHERE Nachname = 'Feuz' AND Vorname = 'Beat')
+WHERE Typ = 'Käfer';
+
+UPDATE Fahrzeug
+SET fk_Mitarbeiter_ID = (SELECT Mitarbeiter_ID FROM Mitarbeiter WHERE Nachname = 'Cuche' AND Vorname = 'Didier')
+WHERE Marke = 'Ford';
+
+SELECT * FROM Fahrzeug;
+
+
+-- 6 Ersatzfahrzeug zuweisen
+
+SELECT * FROM Fahrzeug WHERE fk_Mitarbeiter_ID IS NULL;
+
+UPDATE Fahrzeug
+SET fk_Mitarbeiter_ID = (SELECT Mitarbeiter_ID FROM Mitarbeiter WHERE Nachname = 'Feuz' AND Vorname = 'Beat')
+WHERE Typ = 'Mini Cooper';
+
+SELECT * FROM Fahrzeug;
+
+
+-- 7 Fahrzeuge verkaufen und kaufen
+
+DELETE FROM Fahrzeug
+WHERE Marke = 'Toyota';
+
+INSERT INTO Fahrzeug (Marke, Typ, Neupreis, Jahrgang, Occasion) VALUES 
+('Lamborghini', 'Diablo', 235000.00, 1990, 1);
+
+SELECT * FROM Fahrzeug;
+
+
+-- 8 Kennzeichen hinzufügen
+
+ALTER TABLE Fahrzeug ADD Kennzeichen VARCHAR(50);
 GO
 
-INSERT INTO Mitarbeiter_in (Vorname, Nachname, Funktion) VALUES
-('Tom', 'Lüthi', 'Bibliothekar/in'),
-('Dominique', 'Aegerter', 'Bibliothekar/in'),
-('Marc', 'Márquez', 'Lernende/r'),
-('Valentino', 'Rossi', 'Leiter/in'),
-('Fabio', 'Quartararo', 'Lernende/r');
+UPDATE Fahrzeug
+SET Kennzeichen = 'LU 777'
+WHERE Typ = 'Model T';
+
+UPDATE Fahrzeug
+SET Kennzeichen = 'LU 64'
+WHERE Typ = 'Mustang';
+
+UPDATE Fahrzeug
+SET Kennzeichen = 'LU 150'
+WHERE Typ = 'Mini Cooper';
+
+UPDATE Fahrzeug
+SET Kennzeichen = 'NW 100'
+WHERE Typ = '911';
+
+SELECT * FROM Fahrzeug;
+
+
+-- 9 Mitarbeiter löschen
+
+SELECT * FROM Fahrzeug WHERE fk_Mitarbeiter_ID = (SELECT Mitarbeiter_ID FROM Mitarbeiter WHERE Nachname = 'Feuz' AND Vorname = 'Beat');
+
+UPDATE Fahrzeug
+SET fk_Mitarbeiter_ID = NULL
+WHERE fk_Mitarbeiter_ID = (SELECT Mitarbeiter_ID FROM Mitarbeiter WHERE Nachname = 'Feuz' AND Vorname = 'Beat');
+
+DELETE FROM Mitarbeiter
+WHERE Nachname = 'Feuz' AND Vorname = 'Beat';
+
+SELECT * FROM Mitarbeiter;
+
+
+-- 10 Zeitwert erfassen
+
+ALTER TABLE Fahrzeug ADD Zeitwert DECIMAL(10, 2);
 GO
 
--- 7 Kunden
+UPDATE Fahrzeug
+SET Zeitwert = Neupreis;
 
-INSERT INTO Kunde (Vorname, Nachname) VALUES
-('Max', 'Verstappen'),
-('Lewis', 'Hamilton');
-GO
+SELECT * FROM Fahrzeug;
 
-INSERT INTO Kunde (Vorname, Nachname, Adresse, PLZ, Ort, Land) VALUES
-('Charles', 'Leclerc', 'Marktplatz 4', '6210', 'Sursee', 'Schweiz'),
-('Lando', 'Norris', 'Seestrasse 8', '6204', 'Sempach', 'Schweiz'),
-('Carlos', 'Sainz', 'Dorfstrasse 11', '6208', 'Oberkirch', 'Schweiz'),
-('George', 'Russell', 'Hauptstrasse 9', '6252', 'Dagmersellen', 'Schweiz'),
-('Fernando', 'Alonso', 'Schulhausstrasse 7', '6206', 'Neuenkirch', 'Schweiz'),
-('Sergio', 'Pérez', 'Kirchweg 5', '6130', 'Willisau', 'Schweiz');
-GO
 
-SELECT * FROM Kunde;
-GO
+-- 11 Zeitwert anpassen
 
--- 8 Bücher
+UPDATE Fahrzeug
+SET Zeitwert = CASE
+	WHEN YEAR(GETDATE()) - Jahrgang < 6 THEN Neupreis * 0.5
+	WHEN YEAR(GETDATE()) - Jahrgang BETWEEN 6 AND 25 THEN Neupreis * 0.1
+	WHEN YEAR(GETDATE()) - Jahrgang BETWEEN 26 AND 50 THEN Neupreis * 3
+	WHEN YEAR(GETDATE()) - Jahrgang BETWEEN 51 AND 75 THEN Neupreis * 10
+	WHEN YEAR(GETDATE()) - Jahrgang BETWEEN 76 AND 100 THEN Neupreis * 100
+	ELSE Neupreis * 1000
+END;
 
-SELECT Verlagsnummer FROM Verlag WHERE Name = 'Kein & Aber Verlag';
-GO
+SELECT * FROM Fahrzeug;
 
-INSERT INTO Buch (ISBN, Titel, Erscheinungsjahr, fk_Verlag_ID) VALUES
-('9780552176453', 'Good Omens', 1990, (SELECT Verlagsnummer FROM Verlag WHERE Name = 'Kein & Aber Verlag'));
-GO
 
-INSERT INTO Buch (ISBN, Titel, Erscheinungsjahr, fk_Verlag_ID) VALUES
-('9780261102385', 'Der Herr der Ringe', 1954, (SELECT Verlagsnummer FROM Verlag WHERE Name = 'dtv')),
-('9780451524935', '1984', 1949, (SELECT Verlagsnummer FROM Verlag WHERE Name = 'Suhrkamp')),
-('9783150000014', 'Die Republik', -380, (SELECT Verlagsnummer FROM Verlag WHERE Name = 'Reaclam')),
-('9780156012195', 'Der kleine Prinz', 1943, (SELECT Verlagsnummer FROM Verlag WHERE Name = 'Fischer Verlag')),
-('9783150000021', 'Romeo und Julia', 1597, (SELECT Verlagsnummer FROM Verlag WHERE Name = 'Reaclam')),
-('9783150000038', 'Hamlet', 1603, (SELECT Verlagsnummer FROM Verlag WHERE Name = 'Reaclam')),
-('9783150000045', 'Ein Sommernachtstraum', 1595, (SELECT Verlagsnummer FROM Verlag WHERE Name = 'Reaclam'));
-GO
+-- 12 Occasionsfahrzeuge justieren
 
-SELECT * FROM Buch;
-GO
+UPDATE Fahrzeug
+SET Zeitwert = Zeitwert * 0.8
+WHERE Occasion = 1 AND Zeitwert > 100000;
 
--- 9 Bücher mit Autoren verknüpfen
+-- 13 Selbstkontrolle
 
-SELECT
-	(SELECT Buch_ID FROM Buch WHERE ISBN = '9780261102385') AS Buch_ID,
-	(SELECT Autor_ID FROM Autor WHERE Nachname = 'Tolkien') AS Autor_ID;
-GO
+SELECT * FROM Mitarbeiter;
 
-INSERT INTO [dbo].[Buch_Autor] (fk_Buch_ID, fk_Autor_ID) VALUES
-((SELECT Buch_ID FROM Buch WHERE ISBN = '9780552176453'), (SELECT Autor_ID FROM Autor WHERE Nachname = 'Gaiman')),
-((SELECT Buch_ID FROM Buch WHERE ISBN = '9780552176453'), (SELECT Autor_ID FROM Autor WHERE Nachname = 'Pratchett')),
-((SELECT Buch_ID FROM Buch WHERE ISBN = '9780261102385'), (SELECT Autor_ID FROM Autor WHERE Nachname = 'Tolkien')),
-((SELECT Buch_ID FROM Buch WHERE ISBN = '9780451524935'), (SELECT Autor_ID FROM Autor WHERE Nachname = 'Orwell')),
-((SELECT Buch_ID FROM Buch WHERE ISBN = '9783150000014'), (SELECT Autor_ID FROM Autor WHERE Nachname = '')),
-((SELECT Buch_ID FROM Buch WHERE ISBN = '9780156012195'), (SELECT Autor_ID FROM Autor WHERE Nachname = 'de Saint-Exupéry')),
-((SELECT Buch_ID FROM Buch WHERE ISBN = '9783150000021'), (SELECT Autor_ID FROM Autor WHERE Nachname = 'Shakespeare')),
-((SELECT Buch_ID FROM Buch WHERE ISBN = '9783150000038'), (SELECT Autor_ID FROM Autor WHERE Nachname = 'Shakespeare')),
-((SELECT Buch_ID FROM Buch WHERE ISBN = '9783150000045'), (SELECT Autor_ID FROM Autor WHERE Nachname = 'Shakespeare'));
-GO
-
-SELECT *
-FROM [dbo].[Buch_Autor] ba
-JOIN Buch b ON b.Buch_ID = ba.fk_Buch_ID
-JOIN Autor a ON a.Autor_ID = ba.fk_Autor_ID;
-GO
-
--- 10 Bücher mit Kategorien verknüpfen
-
-SELECT
-	(SELECT Buch_ID FROM Buch WHERE Titel = 'Good Omens') AS Buch_ID,
-	(SELECT Kategorie_ID FROM Kategorie WHERE Bezeichnung = 'Satire') AS Kategorie_ID;
-GO
-
-INSERT INTO [dbo].[Buch_Kategorie] (fk_Buch_ID, fk_Kategorie_ID) VALUES
-(
-	(SELECT Buch_ID FROM Buch WHERE Titel = 'Good Omens'),
-	(SELECT Kategorie_ID FROM Kategorie WHERE Bezeichnung = 'Satire')
-);
-GO
-
-INSERT INTO [dbo].[Buch_Kategorie] (fk_Buch_ID, fk_Kategorie_ID) VALUES
-((SELECT Buch_ID FROM Buch WHERE Titel = 'Der Herr der Ringe'), (SELECT Kategorie_ID FROM Kategorie WHERE Bezeichnung = 'Fantasy')),
-((SELECT Buch_ID FROM Buch WHERE Titel = '1984'), (SELECT Kategorie_ID FROM Kategorie WHERE Bezeichnung = 'Dystopie')),
-((SELECT Buch_ID FROM Buch WHERE Titel = 'Die Republik'), (SELECT Kategorie_ID FROM Kategorie WHERE Bezeichnung = 'Philosophie')),
-((SELECT Buch_ID FROM Buch WHERE Titel = 'Der kleine Prinz'), (SELECT Kategorie_ID FROM Kategorie WHERE Bezeichnung = 'Klassiker')),
-((SELECT Buch_ID FROM Buch WHERE Titel = 'Romeo und Julia'), (SELECT Kategorie_ID FROM Kategorie WHERE Bezeichnung = 'Klassiker')),
-((SELECT Buch_ID FROM Buch WHERE Titel = 'Romeo und Julia'), (SELECT Kategorie_ID FROM Kategorie WHERE Bezeichnung = 'Drama')),
-((SELECT Buch_ID FROM Buch WHERE Titel = 'Hamlet'), (SELECT Kategorie_ID FROM Kategorie WHERE Bezeichnung = 'Klassiker')),
-((SELECT Buch_ID FROM Buch WHERE Titel = 'Hamlet'), (SELECT Kategorie_ID FROM Kategorie WHERE Bezeichnung = 'Drama')),
-((SELECT Buch_ID FROM Buch WHERE Titel = 'Ein Sommernachtstraum'), (SELECT Kategorie_ID FROM Kategorie WHERE Bezeichnung = 'Drama'));
-GO
-
-SELECT *
-FROM [dbo].[Buch_Kategorie] bk
-JOIN Buch b ON b.Buch_ID = bk.fk_Buch_ID
-JOIN Kategorie k ON k.Kategorie_ID = bk.fk_Kategorie_ID; 
-GO
-
-
--- 11 Reservationen erfinden und einfügen
-
-INSERT INTO Buch_Kunde (fk_Buch_ID, fk_Kunde_ID, Enddatum) VALUES
-((SELECT Buch_ID FROM Buch WHERE Titel = 'Good Omens'), (SELECT Kundennummer FROM Kunde WHERE Nachname = 'Hamilton'), DATEADD(DAY, 5, GETDATE())),
-((SELECT Buch_ID FROM Buch WHERE Titel = 'Der Herr der Ringe'), (SELECT Kundennummer FROM Kunde WHERE Nachname = 'Verstappen'), DATEADD(DAY, 2, GETDATE()));
-GO
-
-SELECT * FROM Buch_Kunde;
-GO
-
-
--- 12 Ausleihe/n erfinden und einfügen
-
-INSERT INTO Ausleihe (fk_Buch_ID, fk_Kunde_ID, fk_Mitarbeiter_in_ID, Enddatum) VALUES
-(
-	(SELECT Buch_ID FROM Buch WHERE ISBN = '9780451524935'),
-	(SELECT Kundennummer FROM Kunde WHERE Nachname = 'Leclerc'),
-	(SELECT Personalnummer FROM Mitarbeiter_in WHERE Nachname = 'Lüthi'),
-	DATEADD(DAY, 14, CAST(GETDATE() AS DATE))
-);
-GO
-
-INSERT INTO Ausleihe (fk_Buch_ID, fk_Kunde_ID, fk_Mitarbeiter_in_ID, Startdatum, Enddatum) VALUES
-(
-	(SELECT Buch_ID FROM Buch WHERE ISBN = '9780451524935'),
-	(SELECT Kundennummer FROM Kunde WHERE Nachname = 'Leclerc'),
-	(SELECT Personalnummer FROM Mitarbeiter_in WHERE Nachname = 'Lüthi'),
-	DATEADD(DAY, 14, CAST(GETDATE() AS DATE)),
-	DATEADD(DAY, 28, CAST(GETDATE() AS DATE))
-);
-GO
-
-SELECT *
-FROM Ausleihe;
-GO
-
-
--- 13 Strafgebühr auf 0 setzen
-
-SELECT *
-FROM Ausleihe;
-GO
-
-UPDATE Ausleihe SET Strafgebehr = 0;
-GO
-
-SELECT *
-FROM Ausleihe;
-GO
-
-
--- 14 Ausleihe Verlängern
-
-SELECT * FROM Ausleihe;
-GO
-
-UPDATE Ausleihe SET Enddatum = DATEADD(DAY, 7, Enddatum);
-GO
-
-SELECT * FROM Ausleihe;
-GO
-
-
--- 15 Erscheinungsjahr präzisieren
-
-SELECT *
-FROM Buch
-WHERE ISBN = '9783150000014';
-GO
-
-UPDATE Buch
-SET Erscheinungsjahr = -375
-WHERE ISBN = '9783150000014';
-GO
-
-SELECT *
-FROM Buch
-WHERE ISBN = '9783150000014';
-GO
-
-
--- 16 Beschreibung ergänzen
-
-SELECT *
-FROM Kategorie
-WHERE Bezeichnung = 'Klassiker';
-GO
-
-UPDATE Kategorie
-SET Beschreibung = 'Weltliteratur - bekannt über Generationen'
-WHERE Bezeichnung = 'Klassiker';
-GO
-
-SELECT *
-FROM Kategorie
-WHERE Bezeichnung = 'Klassiker';
-GO
-
-
--- 17 Hauptsitz ergänzen
-
-SELECT * FROM Verlag;
-GO
-
-UPDATE Verlag
-SET Hauptsitz = 'Berlin'
-WHERE Name = 'Suhrkamp';
-GO
-
-SELECT * FROM Verlag;
-GO
-
-
--- 18 Adressen aktualisieren
-
-SELECT * FROM Kunde;
-GO
-
-UPDATE Kunde
-SET Adresse = 'Bahnhofstrasse 25', PLZ = '6210', Ort = 'Sursee', Land = 'Schweiz'
-WHERE Kundennummer = 1;
-
-UPDATE Kunde
-SET Adresse = 'Bahnhofstrasse 25', PLZ = '6210', Ort = 'Sursee', Land = 'Schweiz'
-WHERE Nachname = 'Hamilton'
-AND Vorname = 'Lewis';
-
-SELECT * FROM Kunde;
-GO
-
--- 19 Mitarbeiter befördern
-
-SELECT * FROM Mitarbeiter_in;
-GO
-
-SELECT COUNT(*) FROM Mitarbeiter_in
-WHERE Nachname = 'Lüthi'
-AND Vorname = 'Tom';
-GO
-
-UPDATE Mitarbeiter_in
-SET Funktion = 'Stv. Leiter/in'
-WHERE Nachname = 'Lüthi'
-AND Vorname = 'Tom';
-GO
-
-SELECT * FROM Mitarbeiter_in;
-GO
-
-
--- 20 Reservation beenden
-
-SELECT *
-FROM Buch_Kunde
-GO 
-
-UPDATE Buch_Kunde
-SET Enddatum = DATEADD(DAY, -1, CAST(GETDATE() AS DATE))
-WHERE fk_Kunde_ID = (
-	SELECT Kundennummer
-	FROM Kunde
-	WHERE Vorname = 'Max' AND Nachname = 'Verstappen'
-)
-AND fk_Buch_ID = (
-	SELECT Buch_ID
-	FROM Buch
-	WHERE Titel = 'Good Omens'
-)
-AND Enddatum >= CAST(GETDATE() AS DATE);
-GO
-
-SELECT *
-FROM Buch_Kunde;
-GO
-
-
--- 21 Kunde löschen
--- Die Mitgliedschaft von Sergio Pérez ist abgelaufen.
-
--- Überprüfe vorher, dass nur ein Datensatz gelöscht wird
-SELECT *
-FROM Kunde
-WHERE Vorname = 'Sergio';
-GO
-
-DELETE FROM Kunde
-WHERE Vorname = 'Sergio';
-GO
-
-SELECT *
-FROM Kunde;
-GO
-
-
--- 22 Kunde überprüfen und löschen
--- Die Mitgliedschaft von Fernando Alonso ist abgelaufen.
-
--- Überprüfe vorher, dass nur ein Datensatz gelöscht wird
-SELECT *
-FROM Kunde
-WHERE Vorname = 'Fernando'
-AND Kundennummer NOT IN (SELECT fk_Kunde_ID FROM Buch_Kunde);
-GO
-
-DELETE FROM Kunde
-WHERE Vorname = 'Fernando'
-AND Kundennummer NOT IN (SELECT fk_Kunde_ID FROM Buch_Kunde);
-GO
-
-SELECT *
-FROM Kunde;
-GO
-
-
--- 23 Max und Lewis löschen
--- Die Kunden Max und Lewis haben sich in der Bibliothek unerledigt verhalten.
--- Der Leiter hat entschieden, dass beide aus der Tabelle «Kunde» gelöscht werden.
-
-DELETE FROM Kunde
-WHERE Vorname IN ('Max', 'Lewis');
-GO
-
-SELECT *
-FROM Kunde;
-GO
-
-
--- 24 Reservationen aufräumen
--- Die Datenbank soll bereinigt werden.
--- Löschen Sie alle Reservationen, die vor heute (mit Enddatum vor heute) sind.
-
-DELETE FROM Buch_Kunde
-WHERE Enddatum < CAST(GETDATE() AS DATE);
-GO
-
-SELECT *
-FROM Buch_Kunde;
-GO
-
-
--- 25 Buch überprüfen und löschen
--- Das Buch «Ein Sommernachtstraum» ist nicht mehr auffindbar.
--- Löschen Sie den Datensatz mit der ISBN.
--- Prüfe innerhalb der WHERE-Klausel, dass dieses Buch keine Autoren, Kategorien, Reservationen oder Ausleihzeiten zugewiesen sind.
-
-/*
-ERKLÄRUNG FÜR DEN LEITER:
-Das Buch "Ein Sommernachtstraum" (ISBN 9783150000045) kann gelöscht werden, da:
-1. Es in der Tabelle Buch_Autor nicht verknüpft ist (außer mit Shakespeare, welcher kein Problem darstellt)
-2. Es in der Tabelle Buch_Kategorie als Drama verknüpft ist - aber diese Verknüpfung wird durch die DELETE-Bedingung gewährleistet
-3. Es keine aktiven Reservationen in Buch_Kunde hat (da diese in Aufgabe 24 bereinigt wurden)
-4. Es keine aktiven Ausleihzeiten in Ausleihe hat
-
-Die WHERE-Klausel stellt sicher, dass nur Bücher gelöscht werden, die KEINE dieser Abhängigkeiten haben.
-*/
-
-DELETE FROM Buch
-WHERE ISBN = '9783150000045'
-AND Buch_ID NOT IN (SELECT fk_Buch_ID FROM Buch_Autor)
-AND Buch_ID NOT IN (SELECT fk_Buch_ID FROM Buch_Kategorie)
-AND Buch_ID NOT IN (SELECT fk_Buch_ID FROM Buch_Kunde)
-AND Buch_ID NOT IN (SELECT fk_Buch_ID FROM Ausleihe);
-GO
-
-SELECT *
-FROM Buch;
-GO
+SELECT * FROM Fahrzeug;
