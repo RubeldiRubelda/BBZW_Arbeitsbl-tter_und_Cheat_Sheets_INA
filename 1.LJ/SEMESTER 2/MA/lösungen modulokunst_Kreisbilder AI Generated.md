@@ -29,7 +29,7 @@ Beschreibe: Welche Muster entstehen? Was fällt dir auf?
 * Bei **k = 7** Ein Sechseck.
 * Bei **k = 8** Aufteilung in mehrere gleiche Teile.
 * Bei steigendem **k** entstehen immer mehr Spitzen im Zentrum. Die Anzahl der Spitzen oder "Blätter" entspricht dabei in der Regel dem Wert $k - 1$.
-* **Beobachtung:** Die Linien berühren im Inneren eine unsichtbare Kurve (Hüllkurve), die die geometrische Form definiert.
+* **Beobachtung:** Dort wo 24 nicht ein Vielfaches von z.b 5 und 7 ist, sieht das Muster gut aus. Es entsthenen KEINE Teilmuster
 
 
 
