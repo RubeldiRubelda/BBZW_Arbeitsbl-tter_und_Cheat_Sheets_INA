@@ -25,6 +25,9 @@ Beschreibe: Welche Muster entstehen? Was fällt dir auf?
 **Lösung:**
 * Bei **k = 2** entsteht eine Herzform im Inneren (mathematisch: eine Kardioide).
 * Bei **k = 3** sieht man zwei "Blätter" oder Ausbuchtungen (Nephroide).
+* Bei **k = 5** Rechtecke.
+* Bei **k = 7** Ein Sechseck.
+* Bei **k = 8** Aufteilung in mehrere gleiche Teile.
 * Bei steigendem **k** entstehen immer mehr Spitzen im Zentrum. Die Anzahl der Spitzen oder "Blätter" entspricht dabei in der Regel dem Wert $k - 1$.
 * **Beobachtung:** Die Linien berühren im Inneren eine unsichtbare Kurve (Hüllkurve), die die geometrische Form definiert.
 
