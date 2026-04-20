@@ -84,7 +84,7 @@ SELECT Verlagsnummer FROM Verlag WHERE Name = 'Kein & Aber Verlag';
 GO
 
 INSERT INTO Buch (ISBN, Titel, Erscheinungsjahr, fk_Verlag_ID) VALUES
-('9780552176453', 'Good Omens', 1990, (SELECT Verlagsnummer FROM Verlag WHERE Name = 'Kein & Aber Verlag'));
+('9780552176453', 'Good Omens', 1990, (SELECT Verlagsnummer FROM Verlag WHERE Name = 'Kein & Aber Verlag')); -- Den Select Befehl in der VALUES-Klausel zu verwenden, ermöglicht es, die Verlagsnummer dynamisch zu ermitteln, ohne sie manuell eingeben zu müssen. Dadurch wird die Datenintegrität gewährleistet und Fehler bei der Eingabe vermieden. Immer in Klammern setzen, damit die Subquery korrekt ausgeführt wird.
 GO
 
 INSERT INTO Buch (ISBN, Titel, Erscheinungsjahr, fk_Verlag_ID) VALUES
