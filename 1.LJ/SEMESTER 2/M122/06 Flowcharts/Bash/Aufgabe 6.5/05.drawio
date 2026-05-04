@@ -1,0 +1,90 @@
+<mxfile host="65bd71144e">
+    <diagram id="K8m2Wq6rTx5nPd3bV1yE" name="Seite-1">
+        <mxGraphModel dx="942" dy="659" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="start" value="Start" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="300" y="40" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="cred" value="Username + Passwort eingeben" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="230" y="130" width="260" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="ok" value="Login korrekt?" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="290" y="240" width="140" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="err" value="Fehlermeldung" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="260" width="170" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="menu" value="Menue anzeigen" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="380" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="choice" value="Auswahl?" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="290" y="480" width="140" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="chgUser" value="Username aendern" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="520" y="470" width="180" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="chgPass" value="Passwort aendern" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="520" y="560" width="180" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="logout" value="Logout" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="620" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="end" value="Ende" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="300" y="730" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="e1" style="endArrow=block;html=1;rounded=0;" parent="1" source="start" target="cred" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e2" style="endArrow=block;html=1;rounded=0;" parent="1" source="cred" target="ok" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e3" value="Nein" style="endArrow=block;html=1;rounded=0;" parent="1" source="ok" target="err" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e4" value="Ja" style="endArrow=block;html=1;rounded=0;" parent="1" source="ok" target="menu" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e5" style="endArrow=block;html=1;rounded=0;" parent="1" source="menu" target="choice" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e6" value="1" style="endArrow=block;html=1;rounded=0;" parent="1" source="choice" target="chgUser" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e7" value="2" style="endArrow=block;html=1;rounded=0;" parent="1" source="choice" target="chgPass" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e8" value="3" style="endArrow=block;html=1;rounded=0;" parent="1" source="choice" target="logout" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e9" style="endArrow=block;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="chgUser" target="menu" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="610" y="410"/>
+                        </Array>
+                        <mxPoint x="620" y="460" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e10" style="endArrow=block;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="chgPass" target="menu" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="770" y="590"/>
+                            <mxPoint x="770" y="410"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e11" style="endArrow=block;html=1;rounded=0;" parent="1" source="logout" target="end" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e12" style="endArrow=block;html=1;rounded=0;" parent="1" source="err" target="end" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="170" y="760"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
