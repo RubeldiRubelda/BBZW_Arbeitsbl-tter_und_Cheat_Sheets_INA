@@ -1,0 +1,37 @@
+<mxfile host="app.diagrams.net" modified="2026-04-27T00:00:00.000Z" agent="Codex" version="24.7.17" type="device">
+  <diagram id="M4v7Np2sKx8dQe5cL9hB" name="Seite-1">
+    <mxGraphModel dx="1320" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="start" value="Start" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1"><mxGeometry x="290" y="40" width="120" height="60" as="geometry" /></mxCell>
+        <mxCell id="inputFile" value="Datei mit Namen eingeben" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;" vertex="1" parent="1"><mxGeometry x="210" y="130" width="280" height="60" as="geometry" /></mxCell>
+        <mxCell id="exists" value="Datei vorhanden?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1"><mxGeometry x="280" y="230" width="140" height="100" as="geometry" /></mxCell>
+        <mxCell id="err" value="Fehler ausgeben" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;" vertex="1" parent="1"><mxGeometry x="60" y="250" width="170" height="60" as="geometry" /></mxCell>
+        <mxCell id="readName" value="Naechsten Namen lesen" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1"><mxGeometry x="250" y="380" width="200" height="60" as="geometry" /></mxCell>
+        <mxCell id="hasName" value="Name vorhanden?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1"><mxGeometry x="280" y="470" width="140" height="100" as="geometry" /></mxCell>
+        <mxCell id="build" value="Login aus Vor-/Nachname bauen" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1"><mxGeometry x="520" y="470" width="240" height="60" as="geometry" /></mxCell>
+        <mxCell id="loginFree" value="Login frei?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1"><mxGeometry x="570" y="560" width="140" height="100" as="geometry" /></mxCell>
+        <mxCell id="inc" value="Nummer anhaengen" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1"><mxGeometry x="760" y="580" width="170" height="60" as="geometry" /></mxCell>
+        <mxCell id="pw" value="Zufaelliges Passwort erzeugen" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1"><mxGeometry x="520" y="690" width="240" height="60" as="geometry" /></mxCell>
+        <mxCell id="save" value="Passwort in Datei Login speichern" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1"><mxGeometry x="500" y="780" width="280" height="60" as="geometry" /></mxCell>
+        <mxCell id="end" value="Ende" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1"><mxGeometry x="290" y="900" width="120" height="60" as="geometry" /></mxCell>
+
+        <mxCell id="e1" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="start" target="inputFile"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e2" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="inputFile" target="exists"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e3" value="Nein" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="exists" target="err"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e4" value="Ja" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="exists" target="readName"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e5" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="readName" target="hasName"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e6" value="Nein" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="hasName" target="end"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e7" value="Ja" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="hasName" target="build"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e8" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="build" target="loginFree"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e9" value="Nein" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="loginFree" target="inc"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e10" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="inc" target="loginFree"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e11" value="Ja" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="loginFree" target="pw"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e12" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="pw" target="save"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e13" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="save" target="readName"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="840" y="410" /></Array></mxGeometry></mxCell>
+        <mxCell id="e14" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="err" target="end"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="130" y="930" /></Array></mxGeometry></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,54 @@
+<mxfile host="65bd71144e">
+    <diagram id="F2k9Yp1Qx3m8Lv7aN4tR" name="Seite-1">
+        <mxGraphModel dx="942" dy="659" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="start" value="Start" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="290" y="40" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="input" value="Webpage eingeben" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="130" width="200" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="ping" value="Ping erfolgreich?" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="240" width="140" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="outOn" value="Online ausgeben" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="260" width="180" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="outOff" value="Offline ausgeben" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="260" width="180" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="end" value="Ende" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="290" y="390" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="e1" style="endArrow=block;html=1;rounded=0;" parent="1" source="start" target="input" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e2" style="endArrow=block;html=1;rounded=0;" parent="1" source="input" target="ping" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e3" value="Ja" style="endArrow=block;html=1;rounded=0;" parent="1" source="ping" target="outOn" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e4" value="Nein" style="endArrow=block;html=1;rounded=0;" parent="1" source="ping" target="outOff" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e5" style="endArrow=block;html=1;rounded=0;" parent="1" source="outOn" target="end" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="590" y="420"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e6" style="endArrow=block;html=1;rounded=0;" parent="1" source="outOff" target="end" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="150" y="420"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
