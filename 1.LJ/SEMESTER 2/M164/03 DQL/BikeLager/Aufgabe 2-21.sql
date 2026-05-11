@@ -119,4 +119,41 @@ LEFT JOIN Bike [b] ON t.Typ_Id = b.FK_Typ_Id
 WHERE b.Bike_Id IS NULL;
 GO
 
+-- 17
+SELECT  
+    Bezeichnung, 
+    (Preis / (1+0.081)) [Preis exklusive MwSt], 
+    (Preis / (100+8.1) * 8.1) [MwSt], 
+    Preis [Preis inklusive MwSt]
+FROM Bike;
+GO
 
+-- 18
+SELECT SUM(Preis * 0.1575) [Total]
+FROM Bike;
+GO
+
+-- 19
+SELECT ROUND(SUM((Preis + 80) * 0.1575), 2) [Gewinn]
+FROM Bike;
+GO
+
+-- 20
+SELECT m.Bezeichnung [Marke], t.Bezeichnung [Typ], b.Bezeichnung [Bike],
+             b.Preis [Normalpreis],
+             (b.Preis - 200) [Aktionspreis]
+FROM Bike b
+JOIN Marke m ON b.FK_Marke_Id = m.Marke_Id
+JOIN Typ t ON b.FK_Typ_Id = t.Typ_Id
+WHERE t.Bezeichnung <> 'Citybike'
+    AND b.Preis > 1000
+ORDER BY m.Bezeichnung, t.Bezeichnung, b.Bezeichnung;
+GO
+
+-- 21
+SELECT t.Bezeichnung [Typ], b.Bezeichnung [Bike], m.Bezeichnung [Marke], b.Preis [Preis]
+FROM Bike b
+JOIN Typ t ON b.FK_Typ_Id = t.Typ_Id
+JOIN Marke m ON b.FK_Marke_Id = m.Marke_Id
+WHERE b.Preis = (SELECT MAX(Preis) FROM Bike WHERE FK_Typ_Id = b.FK_Typ_Id)
+ORDER BY t.Bezeichnung, b.Bezeichnung;
