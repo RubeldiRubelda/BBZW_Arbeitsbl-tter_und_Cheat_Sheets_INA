@@ -10,7 +10,7 @@ Hast du auch ein Cheat Sheet oder Unterrichtsdateien?
 
 ACHTUNG:
 
-NUR DATEIEN HOCHLADEN, DIE DU SELBER ERSTELLT HAST (bzw. du Rechte hast)
+NUR DATEIEN HOCHLADEN, DIE DU SELBER ERSTELLT HAST, SELBER GELÖST HAST (bzw. du Rechte hast)
 
 
 ⚠️☢️Hinweis:
