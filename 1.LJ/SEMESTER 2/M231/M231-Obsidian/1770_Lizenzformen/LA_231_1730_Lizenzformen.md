@@ -1,97 +1,103 @@
-# Lern- und Arbeitsauftrag LA_231_1730_Lizenzformen
 
-## Metadaten
-
-| Eigenschaft | Inhalt |
-|---|---|
-| **Titel** | Lizenzformen von Software aus Sicht des Datenschutzes beurteilen können |
-| **Modul** | 231 Informatiker/in EFZ |
-| **Autor/Version** | Davor Vukelic / V1.0 |
-| **Hilfsmittel** | • Notebook<br>• Präsentation: 1770_Lizenzformen<br>• Übersicht Lizenzen: Open-Source-Lizenzen und was ich damit machen darf (adesso.de) |
-| **Nachweis** | Exam.net-Test (Einzelarbeit) mit 4 Fragen – 8 Punkte |
-| **Sozialform** | Einzelarbeit / Partnerarbeit |
-| **Leistungsziele** | LZ 6.1 |
 
 ---
 
-## Ausgangslage
+```
+table without id
+Titel as "Titel",
+Modul as "Modul",
+Autor_Version as "Autor/Version",
+Hilfsmittel as "Hilfsmittel",
+Nachweis as "Nachweis",
+Sozialform as "Sozialform",
+Leistungsziele as "Leistungsziele"
+where file = this.file
+```
+
+---
+
+## **Lern- und Arbeitsauftrag LA_231_1730_Lizenzformen.docx**
+
+### **Metadaten**
+
+|Eigenschaft|Inhalt|
+|---|---|
+|**Titel**|Lizenzformen von Software aus Sicht des Datenschutzes beurteilen können|
+|**Modul**|231 Informatiker/in EFZ|
+|**Autor/Version**|Davor Vukelic / V1.0|
+|**Hilfsmittel**|• Notebook  <br>• Präsentation: 1770_Lizenzformen  <br>• Übersicht Lizenzen: Open-Source-Lizenzen und was ich damit machen darf (adesso.de)|
+|**Nachweis**|Exam.net-Test (Einzelarbeit) mit 4 Fragen  <br>8 Punkte|
+|**Sozialform**|Einzelarbeit / Partnerarbeit|
+|**Leistungsziele**|LZ 6.1|
+
+---
+
+### **Ausgangslage**
 
 Aus Sicht Datenschutz und Urheberrecht unterscheiden sich Software-Lizenzen stark. Nicht alle sind geeignet, um das Ziel zu erreichen.
 
 ---
 
-## Aufgabenstellung
+## **Aufgabenstellung**
 
 Analysieren Sie die beiden Fallbeispiele betreffend Eignung der Lizenz aus Sicht des Datenschutzes, der Datensicherheit, Lizenzeignung und bringen Sie Änderungsvorschläge an.
 
----
+### **Teilaufgabe 1: Fallbeispiel UmSoft AG**
 
-### Teilaufgabe 1: Fallbeispiel UmSoft AG
+### Analyse (Datenschutz & Datensicherheit)
 
-**Ausgangssituation:**
-Die UmSoft AG muss für einen Kunden eine neue Plattform für die Analyse von Leistungen von Studenten_innen erstellen. Damit soll in Zukunft die Erfolgsquote von Studierenden errechnet werden. Damit können potenzielle Studienabbrecher_innen frühzeitig erkannt werden.
+- **Kritischer Punkt 1 (Closed-Source Anonymisierung):** Die Anonymisierung der hochsensiblen Studentendaten (Erfolgsquoten, potenzielle Studienabbrecher fallen unter DSG/DSGVO) erfolgt über eine Closed-Source-Software. Da der Code nicht einsehbar ist, kann nicht unabhängig überprüft werden, ob die Anonymisierung _wirklich_ mathematisch sauber und irreversibel durchgeführt wird.
+    
+- **Kritischer Punkt 2 (Cloud-Anbieter & KI):** Die Weitergabe der Daten an einen Cloud-Anbieter zur KI-Analyse birgt massive Risiken. Wenn die Anonymisierung im Schritt davor fehlerhaft war, verlässt Personenbezug das Haus. Zudem muss geklärt sein, wo der Cloud-Anbieter sitzt (Stichwort: Drittstaatenübermittlung / US-Cloud-Act) und ob die KI mit den Daten "trainiert" wird.
+    
+- **Kritischer Punkt 3 (Backup-Cloud):** Auch hier gilt: Cloud-Backups von sensiblen Daten müssen zwingend **Client-Side-Encrypted (Zero-Knowledge)** sein, bevor sie die eigenen Server verlassen.
+    
+- **Kritischer Punkt 4 (GPLv2 & Code-Anpassung):** Die GPLv2 besitzt ein **starkes Copyleft**. Wenn die UmSoft AG die modifizierte Software an den Kunden (die Hochschule/Schule) _weitergibt_, gilt dies rechtlich als Vertrieb ("Distribution"). Das bedeutet: UmSoft **muss** dem Kunden den modifizierten Quellcode unter der GPLv2 offenlegen. Das ist für den Kunden gut, muss aber vertraglich so gewollt sein.
+    
+- **Kritischer Punkt 5 (Unbestimmte Programmbibliothek):** Da diese Bibliothek direkt mit der GPLv2-Software verknüpft wird, droht durch den "infektiösen" Charakter der GPLv2, dass auch diese neue Bibliothek unter der GPLv2 lizenziert werden muss (wenn sie statisch/dynamisch gelinkt wird und ein Derivat bildet).
+    
 
-**Vorgesehene Komponenten:**
-- Plattform auf der Basis von Linux
-- Anonymisierungssoftware als Closed-Source Lösung
-- Cloudanbieter für KI-Analysen
-- Weiterer Cloudanbieter für Archivierung und Backup
-- Auswertungssoftware unter GPLv2 (mit Codeanpassungen nötig)
-- Zusätzlich zu programmierende Programmbibliothek (Lizenz noch offen)
+### Änderungsvorschläge
 
-#### Analyse
+1. **Anonymisierung:** Ersetzen der Closed-Source-Software durch eine bewährte, auditierte Open-Source-Lösung. Nur so ist die Korrektheit der Anonymisierung für Datenschützer nachvollziehbar.
+    
+2. **KI-Analyse:** Vorzugsweise eine datenschutzkonforme On-Premise-KI (z. B. ein lokales Open-Source LLM/Modell) auf den eigenen Servern betreiben, statt Daten an externe Cloud-KIs zu senden. Falls Cloud unumgänglich: Strenges AVV (Auftragsverarbeitungsvertrag) und Hosting in der Schweiz/EU erzwingen.
+    
+3. **Bibliothek-Lizenz:** Die neue Bibliothek direkt unter **GPLv2** (oder einer kompatiblen Lizenz wie der LGPLv3, falls sie separat gehalten werden soll) einplanen, um Lizenzkonflikte mit der Auswertungssoftware zu vermeiden.
+### **Teilaufgabe 2: MixSoft GmbH**
+### Analyse (Datenschutz & Datensicherheit)
 
-| Komponente | Lizenz / Modell | Datenschutz | Datensicherheit | Lizenzeignung | Änderungsvorschlag |
-|---|---|---|---|---|---|
-| **Plattform (Linux)** | Open Source (z. B. GPL) | ✅ Quellcode einsehbar, keine versteckten Datenweitergaben | ✅ Sicherheitslücken durch Community schnell erkannt | ✅ Geeignet | Keine Änderung nötig |
-| **Anonymisierungssoftware (Closed Source)** | Proprietär | ⚠️ Quellcode nicht einsehbar – unklar, ob Daten weitergegeben werden | ⚠️ Sicherheitslücken nicht selbst prüfbar | ❌ Kritisch bei Personendaten | Wechsel zu einer Open-Source-Lösung (z. B. ARX) – Quellcode muss bei Personendaten prüfbar sein |
-| **Cloud-KI für Analysen** | SaaS / extern | ❌ Personendaten verlassen die eigene Infrastruktur | ❌ Datentransfer ins Ausland möglich – DSG/DSGVO-Risiko | ⚠️ Nur wenn Daten vollständig anonymisiert sind | Sicherstellen, dass Daten vor dem Transfer vollständig de-identifiziert sind; Datenverarbeitungsvertrag (DPA) abschliessen |
-| **Backup-Cloud** | SaaS / extern | ⚠️ Speicherort unklar – evtl. Drittland | ⚠️ Abhängigkeit vom Anbieter | ⚠️ Nur mit Vertrag geeignet | Schweizer oder EU-Anbieter wählen; Verschlüsselung vor dem Upload sicherstellen |
-| **Auswertungssoftware (GPLv2)** | Open Source (Copyleft) | ✅ Quellcode einsehbar | ✅ Transparente Sicherheitsstruktur | ⚠️ Anpassungen am Code müssen unter GPLv2 veröffentlicht werden | Wenn Code geheim bleiben soll: Alternative mit permissiver Lizenz prüfen |
-| **Programmbibliothek (Lizenz offen)** | Noch nicht bestimmt | – | – | – | Kompatible Lizenz zu GPLv2 wählen (z. B. LGPLv2.1 oder GPLv2), um Lizenzkonflikte zu vermeiden |
+- **Positiver Aspekt (Mattermost & Linux):** Die Wahl von Mattermost (Self-Hosted) auf Linux-Servern ist aus Sicht des Datenschutzes hervorragend. Die MixSoft GmbH behält die volle Datenhoheit (On-Premise), es fließen keine Chat-Protokolle unkontrolliert ab.
+    
+- **Kritischer Punkt 1 (Cloud-Backup):** Auch hier liegt das Risiko im Detail: Werden die Backups unverschlüsselt in die Cloud geladen, sind alle internen Firmen-Chats bei einem Datenleck beim Cloud-Anbieter einsehbar.
+    
+- **Kritischer Punkt 2 (MIT-Lizenz & LGPLv3 Modifikation):** Mattermost selbst nutzt die MIT-Lizenz (sehr permissiv, erlaubt fast alles). Die Integration der Windows-Benutzer soll über eine modifizierte **LGPLv3-Bibliothek** laufen. Die LGPLv3 hat ein **beschränktes Copyleft**. Wenn MixSoft diese Bibliothek modifiziert, müssen sie die Änderungen am Code der Bibliothek offenlegen, sobald sie die Software an die Partner verteilen. Wenn die Plattform aber nur rein intern als Service (SaaS-ähnlich für die Partner) bereitgestellt wird, greift das Copyleft bei der LGPL meist nicht (im Gegensatz zur AGPL).
+    
 
-#### Fazit UmSoft AG
+### Änderungsvorschläge
 
-Das grösste Risiko liegt bei der **Closed-Source-Anonymisierungssoftware** und der **externen Cloud-KI**. Bei Personendaten von Studierenden gelten strenge DSG/DSGVO-Anforderungen. Closed-Source-Lösungen sind für sicherheitskritische Verarbeitung ungeeignet, da keine Prüfbarkeit besteht. Der Einsatz von Cloud-Diensten erfordert zwingend Datenverarbeitungsverträge und sollte auf Anbieter im DSGVO-Raum beschränkt werden.
-
----
-
-### Teilaufgabe 2: Fallbeispiel MixSoft GmbH
-
-**Ausgangssituation:**
-Die MixSoft GmbH installiert für sich eine neue Collaborations-Plattform. Die Wahl ist auf Mattermost gefallen (MIT-Lizenz), betrieben auf eigenem Server mit Linux. Backup wird in eine Cloud gespeichert. Eine bestehende Programmbibliothek unter LGPLv3 muss für die Integration von Windows-Server-Umgebungen der Partner angepasst werden.
-
-#### Analyse
-
-| Komponente | Lizenz / Modell | Datenschutz | Datensicherheit | Lizenzeignung | Änderungsvorschlag |
-|---|---|---|---|---|---|
-| **Mattermost** | MIT-Lizenz | ✅ Self-Hosted: Daten bleiben im eigenen Haus | ✅ Quellcode offen und prüfbar | ✅ MIT ist sehr permissiv – geeignet | Keine Änderung nötig |
-| **Linux (Betriebssystem)** | Open Source | ✅ Transparent und sicher | ✅ Aktiv gepflegt | ✅ Geeignet | Keine Änderung nötig |
-| **Backup in Cloud** | SaaS / extern | ⚠️ Kommunikationsdaten verlassen die eigene Infrastruktur | ⚠️ Abhängigkeit vom Cloud-Anbieter | ⚠️ Nur mit Vertrag geeignet | Daten vor dem Upload Ende-zu-Ende verschlüsseln; Schweizer oder EU-Anbieter bevorzugen |
-| **Programmbibliothek (LGPLv3) anpassen** | LGPL v3 | ✅ Quellcode einsehbar | ✅ Sicherheitsprüfung möglich | ⚠️ Anpassungen an der Bibliothek müssen unter LGPLv3 bleiben | Angepassten Bibliothekscode unter LGPLv3 veröffentlichen; MIT-Hauptprojekt bleibt davon unberührt |
-
-#### Fazit MixSoft GmbH
-
-Die Wahl von **Mattermost (MIT) auf eigenem Server mit Linux** ist aus Datenschutzsicht sehr gut – Daten verbleiben in der eigenen Infrastruktur. Das **Cloud-Backup** ist der kritischste Punkt: verschlüsselt übertragen und ein vertrauenswürdiger Anbieter im DSGVO-Raum ist Pflicht. Die Anpassung der **LGPLv3-Bibliothek** ist lizenzrechtlich unproblematisch, solange die Änderungen am Bibliothekscode offengelegt werden; das Hauptprogramm muss nicht unter LGPL stehen.
+1. **Backup-Verschlüsselung:** Es muss eine strikte, automatisierte Verschlüsselung (z.B. AES-256) der Backup-Dateien _vor_ dem Upload in die Cloud eingerichtet werden (Verschlüsselung "at rest" und "in transit"). Die Schlüssel dürfen nicht in der Cloud liegen.
+    
+2. **Lizenz-Konformität bei Partner-Anbindung:** Wenn die Windows-Partner die modifizierte LGPLv3-Bibliothek als Client-Komponente bei sich lokal installieren müssen, muss MixSoft den Quellcode dieser spezifischen Bibliotheks-Anpassungen den Partnern zur Verfügung stellen. Das sollte im Projektumfang direkt eingeplant werden. Liegt die Bibliothek nur auf dem eigenen Linux-Server, besteht kein Handlungsbedarf, es ist aber sauberer, die Änderungen intern zu dokumentieren.
 
 ---
 
-## Gütekriterien
+### **Gütekriterien**
 
 Der Lern- und Arbeitsauftrag ist erfüllt, wenn …
 
-- [x] Sie die beiden Fallbeispiele unter den geforderten Gesichtspunkten analysiert haben.
-- [x] Sie Veränderungen vorgeschlagen haben.
-- [ ] Sie die Lösung auf Moodle abgegeben haben.
+- [ ]  Sie die beiden Fallbeispiele unter den geforderten Gesichtspunkten analysiert haben.
+- [ ]  Sie Veränderungen vorgeschlagen haben.
+- [ ]  Sie die Lösung auf Moodle abgegeben haben.
 
 ---
 
-## Zusätzliche Angaben zum Auftrag
+### **Zusätzliche Angaben zum Auftrag**
 
 Keine
 
 ---
 
-## Mögliche Erweiterungsaufträge
+### **Mögliche Erweiterungsaufträge**
 
 Keine
