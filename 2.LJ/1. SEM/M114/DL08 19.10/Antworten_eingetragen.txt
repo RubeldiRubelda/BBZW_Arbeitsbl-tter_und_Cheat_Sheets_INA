@@ -1,0 +1,37 @@
+Eingetragene Antworten:
+1. Gruppen: WWWWWW | BBB | WW; Code: 6W3B2W
+2. 11
+3. 6
+4. WWWWWWBBBWW
+5. Ja. Der Text ist genau gleich; RLE ist verlustfrei.
+6. 3A1B6C2D; 2K5L1M -> KKLLLLLM
+7. ABCDEFGH: 8 -> 16 Zeichen; es wird groesser, weil jeder Lauf nur die Laenge 1 hat.
+8. Nein. Es entstehen 12 Laeufe und der Code 1A1B1A1B1A1B1A1B1A1B1A1B ist mit 24 Zeichen doppelt so lang.
+9. 10 | 0 | 111
+10. 100111
+11. 0 | 111 | 0 | 10 | 0
+12. ADABA
+13. 0 ist bereits ein vollstaendiger Code und kein anderer Code beginnt mit 0; die Codetabelle ist praefixfrei.
+14. A:1 + N:1 = 2; T:2 + 2 = 4; E:5 + 4 = 9
+15. 10 | 110 | 111 (Bitstrom: 10110111)
+16. 18
+17. 18 Bits (feste Zuordnung)
+18. 15
+19. 3
+20. 15
+21. E hat den kuerzesten Code, weil E am haeufigsten vorkommt.
+22. 1, 2, 3, 5
+23. Der Empfaenger baut mit demselben Startwoerterbuch und denselben Regeln dieselben Eintraege auf; es muss nicht mitgesendet werden.
+24. RLE - A kommt zwanzigmal direkt hintereinander vor.
+25. Huffman - haeufige Zeichen erhalten kurze Codes.
+26. LZ/LZW - die Gruppe M114-TEST wiederholt sich.
+27. RLE erkennt nur gleiche direkte Nachbarn; LZW kann die wiederkehrende Gruppe AB als Woerterbucheintrag speichern.
+28. 6B; haeufige Zeichen erhalten bei Huffman kurze Codes; LZW ersetzt bekannte Zeichenketten durch Woerterbuchnummern; alle drei Verfahren sind verlustfrei und stellen die Originaldaten wieder her.
+29. 0
+30. 6, 3, 5, 8
+31. 0000001110000011111111
+32. Die dritte Pixelzeile; nach jedem Pixel wechselt die Farbe, daher entstehen 16 statt 8 sichtbare Codezeichen.
+33. 1, 2, 3, 3
+34. Abhaengig von Zeilenumbruechen, Dateiname und ZIP-Programm; die Textdatei ist bei mindestens 30 Wiederholungen deutlich groesser als das ZIP-Archiv.
+35. Abhaengig von Zeilenumbruechen, Dateiname und ZIP-Programm; die genaue Groesse ist hier nicht vorgegeben.
+36. Nein. Aus der Dateigroesse allein laesst sich das interne Verfahren nicht sicher erkennen; dafuer braucht man Formatangaben oder die verwendete Kompressionsmethode.

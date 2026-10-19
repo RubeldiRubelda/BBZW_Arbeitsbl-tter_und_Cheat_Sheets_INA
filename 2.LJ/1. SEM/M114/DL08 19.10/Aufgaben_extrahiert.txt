@@ -1,0 +1,278 @@
+GefÃ¼hrtes Leitprogramm Kompressionsverfahren
+Modul M114   Doppellektion 8   Arbeitszeit 70 Minuten
+Du hast vorher etwa 20 Minuten EinfÃ¼hrung an der Wandtafel. Jetzt untersuchst du selbst, wie RLE, Huffman und LZW Daten kÃ¼rzer darstellen. Du arbeitest mit Notepad und auf Papier. Du brauchst keine zusÃ¤tzliche Software.
+Das lernst du
+Du codierst und decodierst kurze Folgen mit RLE. Du erkennst, wann RLE-Daten vergrÃ¶ssert. Du baust einen kleinen Huffman-Baum und liest Codes ab. Du ergÃ¤nzt ein LZW-WÃ¶rterbuch und wÃ¤hlst fÃ¼r einfache Daten eine passende Grundidee.
+So arbeitest du
+Lies immer zuerst einen ganzen Schritt. FÃ¼hre ihn dann aus.
+Schreibe deine Antworten in dieses Dokument. Den Baum zeichnest du auf die freie FlÃ¤che.
+Bearbeite die Stationen der Reihe nach. Nutze die Hilfe, wenn du feststeckst.
+Vergleiche erst am Stopp mit dem LÃ¶sungsdokument. Zusatzaufgaben sind freiwillig.
+Dein Zeitplan
+Teil
+Arbeit
+Zeit
+Vorbereitung
+Ordner und Notepad Ã¶ffnen
+4 Min.
+Experiment 1
+RLE codieren und zurÃ¼cklesen
+12 Min.
+Experiment 2
+Expansion erkennen
+5 Min.
+Experiment 3
+Huffman-Codes verwenden
+8 Min.
+Experiment 4
+Huffman-Baum und Bitzahlen
+18 Min.
+Experiment 5
+LZW-WÃ¶rterbuch ergÃ¤nzen
+10 Min.
+Abschluss
+Verfahren wÃ¤hlen und Wissen prÃ¼fen
+8 Min.
+Reserve
+Hilfe und Korrekturen
+5 Min.
+Vorbereitung
+Ziel:  Du legst einen Arbeitsordner an und startest den Editor.Richtzeit:  4 Minuten
+Material
+Du brauchst einen Windows-Computer, dieses Dokument, das LÃ¶sungsdokument, Papier / OneNote und zwei verschiedenfarbige Stifte. Alle Beispieldaten stehen im Dokument. Die Dateien aus DL05 brauchst du hier nicht.
+Ordner und Editor Ã¶ffnen
+DrÃ¼cke Windows + E. Der Datei-Explorer Ã¶ffnet sich.
+Ã–ffne Dokumente. Klicke mit der rechten Maustaste in eine freie Stelle. WÃ¤hle Neu und danach Ordner.
+Nenne den Ordner M114_Kompression_Nachname. Ersetze Nachname durch deinen Nachnamen.
+Ã–ffne das StartmenÃ¼. Tippe Editor oder Notepad. Ã–ffne den Windows-Texteditor.
+WÃ¤hle eine neue leere Datei. Lasse Notepad geÃ¶ffnet.
+Wichtige Regeln
+Verwende in den Beispielen Grossbuchstaben. Tippe nur die verlangte Zeichenfolge, ohne Leerzeichen und ohne Enter am Schluss. Die sichtbaren Zeichen werden von Hand gezÃ¤hlt. Das reicht fÃ¼r unsere vereinfachten Untersuchungen.
+Ein Code braucht eine vereinbarte Regel. Hier bedeutet 4B genau vier B. Es bedeutet nicht ein B plus vier zusÃ¤tzliche B. Die Zahlenfolge vom Einstieg ist fÃ¼r diese Experimente nicht nÃ¶tig.
+Stopp 0
+Vergleiche jetzt mit der LÃ¶sung. Korrigiere mit einer anderen Farbe.
+â˜  Mein Arbeitsordner ist angelegt.
+â˜  Notepad ist geÃ¶ffnet.
+â˜  Ich weiss: 4B bedeutet BBBB.
+Experiment 1 RLE mit Notepad untersuchen
+Ziel:  Du ersetzt direkt aufeinanderfolgende gleiche Zeichen durch eine Anzahl. Danach stellst du den ursprÃ¼nglichen Text wieder her.Richtzeit:  12 Minuten
+Teil A Codieren
+Tippe in Notepad genau: WWWWWWBBBWW
+Speichere mit Strg + Umschalt + S. WÃ¤hle deinen Arbeitsordner. Nenne die Datei RLE_original.txt.
+Lies von links nach rechts. Eine Gruppe endet, sobald ein anderer Buchstabe kommt. Zeichne die Gruppen unten mit senkrechten Strichen ab.
+ZÃ¤hle die Buchstaben in jeder Gruppe. Schreibe zuerst die Anzahl, dann den Buchstaben. Beispiel: BBBB wird zu 4B.
+Ã–ffne Ã¼ber Datei > Neu eine zweite leere Datei. Tippe deinen RLE-Code. Speichere als RLE_code.txt.
+Meine Gruppen und mein RLE-Code
+Klicken oder tippen Sie hier, um Text einzugeben.
+1.2 Anzahl sichtbarer Zeichen im Original Klicken oder tippen Sie hier, um Text einzugeben.   im Code Klicken oder tippen Sie hier, um Text einzugeben.
+Teil B Decodieren
+Lies deinen Code in Zweiergruppen: Anzahl und Buchstabe.
+Ã–ffne eine dritte leere Datei. Schreibe jeden Buchstaben so oft, wie die Zahl angibt. Speichere als RLE_kontrolle.txt.
+Ã–ffne RLE_original.txt erneut. Vergleiche beide Texte Zeichen fÃ¼r Zeichen.
+1.3 Mein zurÃ¼ckgelesener Text lautet Klicken oder tippen Sie hier, um Text einzugeben.
+1.4 Ist der Text genau gleich? Was sagt das Ã¼ber RLE aus?
+Klicken oder tippen Sie hier, um Text einzugeben.
+1.5 Codiere AAABCCCCCCDD. Decodiere danach 2K5L1M.
+Klicken oder tippen Sie hier, um Text einzugeben.
+Stopp 1
+Vergleiche jetzt mit der LÃ¶sung. Korrigiere mit einer anderen Farbe.
+â˜  Ich habe Anzahl plus Buchstabe verwendet, auch bei einem einzelnen Buchstaben.
+â˜  Mein zurÃ¼ckgelesener Text stimmt mit dem Original Ã¼berein.
+Wenn es nicht klappt
+Markiere in Gedanken zuerst WWWWWW, dann BBB, dann WW. Beim Decodieren von 2K schreibst du KK. GezÃ¤hlt werden nur sichtbare Zeichen, keine ZeilenumbrÃ¼che.
+Experiment 2 Wenn der Code lÃ¤nger wird
+Ziel:  Du erkennst, dass RLE nicht jede Zeichenfolge verkleinert.Richtzeit:  5 Minuten
+Ã–ffne in Notepad eine neue leere Datei. Tippe ABCDEFGH.
+Jeder Buchstabe ist ein eigener Lauf. Schreibe fÃ¼r jeden die Anzahl 1 und den Buchstaben. Du musst diese Datei nicht speichern.
+ZÃ¤hle das Original und deinen Code. Trage die Werte in die Tabelle ein.
+Vergleiche auch die beiden Folgen aus Experiment 1.
+Original
+Zeichen vorher
+RLE-Code
+Zeichen nachher
+WWWWWWBBBWW
+AAABCCCCCCDD
+ABCDEFGH
+2.1 Welche Folge wird grÃ¶sser? Warum?
+Klicken oder tippen Sie hier, um Text einzugeben.
+2.2 Ist RLE fÃ¼r ABABABABABAB gut geeignet? BegrÃ¼nde.
+Klicken oder tippen Sie hier, um Text einzugeben.
+Merksatz:  Wird die Darstellung grÃ¶sser, nennt man die Expansion. Trotzdem kann sie verlustfrei sein: Man kann alle Zeichen wiederherstellen. Verlustfrei bedeutet nicht automatisch kleiner.
+Stopp 2
+Vergleiche jetzt mit der LÃ¶sung. Korrigiere mit einer anderen Farbe.
+â˜  Ich kann eine Expansion zeigen.
+â˜  Ich habe nur direkt benachbarte gleiche Zeichen zu einem Lauf zusammengefasst.
+Wenn es nicht klappt
+In ABCDEFGH entstehen acht LÃ¤ufe der LÃ¤nge 1. In ABABABABABAB wechselt der Buchstabe ebenfalls nach jeder Stelle.
+Experiment 3 Huffman Codes verwenden
+Ziel:  Du verwendest unterschiedlich lange Bitcodes und liest sie eindeutig zurÃ¼ck.Richtzeit:  8 Minuten
+Bei Huffman erhalten hÃ¤ufige Zeichen kurze Codes. FÃ¼r dieses Experiment ist die Zuordnung schon gegeben. Verwende genau diese Tabelle.
+Zeichen
+Code
+A
+0
+B
+10
+C
+110
+D
+111
+Teil A Codieren
+Ã–ffne in Notepad eine neue Datei. Tippe BAD.
+Schreibe unten fÃ¼r jeden Buchstaben seinen Code. Setze zuerst einen senkrechten Strich zwischen die Codes.
+Schreibe die Codes danach ohne Trennzeichen hintereinander. Dies ist der Bitstrom.
+3.1 BAD mit Trennstrichen Klicken oder tippen Sie hier, um Text einzugeben.   ohne Klicken oder tippen Sie hier, um Text einzugeben.
+Teil B Decodieren
+Lies den Bitstrom 01110100 von links nach rechts. Sammle Bits, bis genau ein Code aus der Tabelle vollstÃ¤ndig ist.
+Schreibe den gefundenen Buchstaben auf. Beginne danach mit dem nÃ¤chsten Bit wieder von vorne.
+Fahre fort, bis alle Bits aufgebraucht sind.
+3.2 Bitstrom mit Trennstrichen Klicken oder tippen Sie hier, um Text einzugeben.
+3.3 ZurÃ¼ckgelesener Text Klicken oder tippen Sie hier, um Text einzugeben.
+3.4 Warum darfst du bei 0 sofort A schreiben?
+Klicken oder tippen Sie hier, um Text einzugeben.
+Stopp 3
+Vergleiche jetzt mit der LÃ¶sung. Korrigiere mit einer anderen Farbe.
+â˜  Mein Bitstrom fÃ¼r BAD hat sechs Bits.
+â˜  Beim ZurÃ¼cklesen bleiben keine Bits Ã¼brig.
+Wenn es nicht klappt
+Beginne bei 01110100 mit 0. Das ist A. Danach liest du 111. Das ist D. Kein vollstÃ¤ndiger Code der Tabelle ist der Anfang eines anderen Codes. Das heisst prÃ¤fixfrei.
+Wichtig:  In Notepad sind 0 und 1 normale Textzeichen. Du erzeugst damit keine echte Datei, in der jedes Zeichen nur ein Bit belegt. Wir untersuchen hier die logischen Bitcodes.
+Experiment 4 Einen Huffman Baum bauen
+Ziel:  Du verbindest immer die beiden kleinsten freien HÃ¤ufigkeiten.Richtzeit:  18 Minuten fÃ¼r diese und die nÃ¤chste Seite
+Teil A HÃ¤ufigkeiten zÃ¤hlen
+Ã–ffne in Notepad eine neue Datei. Tippe EEEEETTAN.
+ZÃ¤hle jedes Zeichen. Trage die HÃ¤ufigkeiten unten ein. PrÃ¼fe, ob die Summe 9 ergibt.
+Zeichen
+E
+T
+A
+N
+HÃ¤ufigkeit
+Teil B Knoten verbinden
+Schreibe auf einem Notizblatt jeden Buchstaben mit seiner HÃ¤ufigkeit auf. Jeder Eintrag ist zunÃ¤chst frei.
+Suche die beiden kleinsten freien Zahlen. Verbinde sie zu einem neuen Knoten. Schreibe ihre Summe hinein.
+Die beiden verbundenen EintrÃ¤ge sind jetzt nicht mehr frei. Nur ihr neuer Summenknoten darf weiter verbunden werden.
+Suche erneut die beiden kleinsten freien Zahlen. Verbinde sie und addiere.
+Wiederhole das, bis nur noch ein Summenknoten Ã¼brig ist. Er steht fÃ¼r alle 9 Zeichen.
+4.1 Meine drei Verbindungen mit Summen
+Klicken oder tippen Sie hier, um Text einzugeben.
+Teil C Den Baum sauber zeichnen
+Zeichne deinen Baum unten. Der letzte Summenknoten steht oben. Die verbundenen Kinder stehen darunter. An jedem Knoten mit zwei Kindern beschriftest du den linken Ast mit 0 und den rechten Ast mit 1. Ein Blatt ist ein Buchstabe ohne weitere Kinder.
+Hilfe:  Beginne mit A und N. Danach sind T, E und dein neuer Summenknoten frei. Zeichne lange Ã„ste, damit du 0 und 1 gut daneben schreiben kannst.
+Experiment 4 Codes lesen und Bits zÃ¤hlen
+Teil D Codes vom Baum ablesen
+Starte beim obersten Knoten. Gehe bis zu E. Notiere alle 0 und 1 auf diesem Weg.
+Wiederhole das fÃ¼r T, A und N. Jeder Weg ergibt einen Code.
+ZÃ¤hle die Bits jedes Codes. Multipliziere die HÃ¤ufigkeit des Zeichens mit dieser CodelÃ¤nge.
+Addiere die vier Ergebnisse.
+Zeichen
+Mein Code
+HÃ¤ufigkeit
+Bits je Code
+Bits insgesamt
+E
+T
+A
+N
+Total
+9
+4.2 Codiere TAN mit deinen eigenen Codes. Klicken oder tippen Sie hier, um Text einzugeben.
+Teil E Vergleichen
+Vier verschiedene Zeichen lassen sich bei einer festen Zuordnung mit je 2 Bits darstellen, zum Beispiel E=00, T=01, A=10 und N=11. Vergleiche diese feste Zuordnung mit deinem Huffman-Code.
+4.3 Feste Zuordnung: 9 Zeichen Ã— 2 Bits = Klicken oder tippen Sie hier, um Text einzugeben. Bits
+Klicken oder tippen Sie hier, um Text einzugeben.
+4.4 Huffman-Code: Klicken oder tippen Sie hier, um Text einzugeben. Bits   Einsparung: Klicken oder tippen Sie hier, um Text einzugeben. Bits Klicken oder tippen Sie hier, um Text einzugeben.
+4.5 Welcher Buchstabe hat den kÃ¼rzesten Code? Warum?
+Klicken oder tippen Sie hier, um Text einzugeben.
+Stopp 4
+Vergleiche jetzt mit der LÃ¶sung. Korrigiere mit einer anderen Farbe.
+â˜  Mein oberster Knoten enthÃ¤lt 9.
+â˜  Jeder Buchstabe kommt als Blatt genau einmal vor.
+â˜  Meine Codes benÃ¶tigen insgesamt 15 Bits fÃ¼r EEEEETTAN.
+Wenn es nicht klappt
+Lies immer von oben bis zum Buchstaben, nicht von unten nach oben. Bei einer Verzweigung gehÃ¶ren 0 und 1 an die Ã„ste. Dein Baum darf anders angeordnet sein als die MusterlÃ¶sung. Entscheidend sind die richtigen Verbindungen und die Bitzahl.
+Wichtig:  Hier zÃ¤hlen wir nur die Bits fÃ¼r den Text. Eine echte Datei muss auch Informationen zu den Codes und weitere Angaben speichern. Das kleine Beispiel beweist deshalb keine Einsparung einer echten Datei.
+Experiment 5 Ein LZW WÃ¶rterbuch ergÃ¤nzen
+Ziel:  Du ersetzt bekannte Buchstabengruppen durch ihre Nummer.Richtzeit:  10 Minuten
+RLE hilft bei ABABABA kaum. LZW kann dagegen Gruppen wie AB lernen. Wir verwenden ein kleines ÃœbungswÃ¶rterbuch. Am Anfang gilt nur A = 1 und B = 2.
+Unsere Arbeitsregel
+Suche am Anfang des Resttextes die lÃ¤ngste bekannte Gruppe. Gib ihre Nummer aus. ErgÃ¤nze zuerst das WÃ¶rterbuch auf Papier: bekannte Gruppe plus nÃ¤chster Buchstabe. Markiere dann in Notepad nur die bekannte Gruppe und drÃ¼cke Entf. Das meinen wir mit streichen. Der nÃ¤chste Buchstabe bleibt im Rest. Neue Codes sind 3, 4, 5 und so weiter. Bei leerem Rest ergÃ¤nzt du nichts mehr.
+Schritt fÃ¼r Schritt
+Tippe in einer neuen Notepad-Datei ABABABA. Das ist dein Resttext.
+Erster Schritt: AB ist noch unbekannt. Daher verwendest du A. Die Ausgabe ist 1. A plus der nÃ¤chste Buchstabe B ergibt den neuen Eintrag AB = 3. Streiche nur das erste A. Der Rest ist BABABA. Die erste Tabellenzeile ist bereits ausgefÃ¼llt.
+Zweiter Schritt: PrÃ¼fe, ob BA schon bekannt ist. Falls nicht, verwende B. Gib dessen Nummer aus. ErgÃ¤nze B plus den nÃ¤chsten Buchstaben. Streiche nur die verwendete Gruppe.
+Dritter Schritt: PrÃ¼fe im aktuellen WÃ¶rterbuch, ob AB und ABA bekannt sind. Verwende die lÃ¤ngste bekannte Gruppe. ErgÃ¤nze sie mit dem nÃ¤chsten Buchstaben und streiche nur die verwendete Gruppe.
+Vierter Schritt: Suche die lÃ¤ngste bekannte Gruppe im Rest. Gib ihren Code aus. Jetzt ist der Rest leer. ErgÃ¤nze nichts mehr.
+Schritt
+Rest vorher
+Bekannte Gruppe
+Ausgabe
+Neuer Eintrag
+1
+ABABABA
+A
+1
+AB = 3
+2
+BABABA
+3
+4
+5.1 Meine ausgegebenen Codes Klicken oder tippen Sie hier, um Text einzugeben.
+5.2 Wieso muss das neu aufgebaute WÃ¶rterbuch nicht mitgesendet werden?
+Klicken oder tippen Sie hier, um Text einzugeben.
+Stopp 5
+Vergleiche jetzt mit der LÃ¶sung. Korrigiere mit einer anderen Farbe.
+â˜  Ich habe vier Codes ausgegeben.
+â˜  In meinem WÃ¶rterbuch stehen am Schluss AB, BA und ABA.
+Wenn es nicht klappt
+Nach dem zweiten Schritt beginnt der Rest mit AB. AB steht dann bereits im WÃ¶rterbuch. Beide Seiten mÃ¼ssen mit demselben StartwÃ¶rterbuch und denselben Regeln arbeiten. Eine vollstÃ¤ndige LZW-Decodierung ist hier nicht verlangt.
+Abschluss Verfahren auswÃ¤hlen
+Ziel:  Du begrÃ¼ndest, welche Grundidee zu einem Muster passt.Richtzeit:  8 Minuten
+Passende Grundideen
+Verwende in der Tabelle RLE, Huffman und LZ/LZW je einmal. BegrÃ¼nde in einem einfachen Satz. Mehrere Verfahren kÃ¶nnen in echten Programmen zusammenarbeiten. Hier ordnest du die besonders passende Grundidee zu.
+Daten
+Grundidee
+BegrÃ¼ndung
+AAAAAAAAAAAAAAAAAAAA
+Ein langer Text mit sehr vielen E und wenigen Q
+M114-TEST-M114-TEST-M114-TEST
+6.1 Warum erkennt LZW bei ABABAB ein Muster, unsere RLE-Regel aber keine langen LÃ¤ufe?
+Klicken oder tippen Sie hier, um Text einzugeben.
+Kurzcheck ohne nachzuschauen
+6.2 Was speichert RLE statt BBBBBB?
+Klicken oder tippen Sie hier, um Text einzugeben.
+6.3 Welche Zeichen erhalten bei Huffman kurze Codes?
+Klicken oder tippen Sie hier, um Text einzugeben.
+6.4 Was ersetzt LZW durch einen Code?
+Klicken oder tippen Sie hier, um Text einzugeben.
+6.5 Sind RLE, Huffman und LZW verlustfrei? Was bedeutet das?
+Klicken oder tippen Sie hier, um Text einzugeben.
+Stopp 6
+Vergleiche jetzt mit der LÃ¶sung. Korrigiere mit einer anderen Farbe.
+â˜  Ich kann alle drei Grundideen in eigenen Worten erklÃ¤ren.
+â˜  Meine Antworten stimmen mit den LÃ¶sungen Ã¼berein.
+Wenn es nicht klappt
+RLE zÃ¤hlt direkt gleiche Nachbarn. Huffman nutzt HÃ¤ufigkeiten. LZW nutzt wiederkehrende Gruppen. Zeige der Lehrperson deinen Baum und erklÃ¤re eine Beobachtung. Erst danach beginnst du mit Zusatzaufgaben.
+Zusatzaufgaben
+Diese Aufgaben gehÃ¶ren nicht zum Pflichtweg. Bearbeite sie nur, wenn du mit allem fertig bist.
+Zusatz A RLE fÃ¼r Bits und Pixel
+Bei der Folge 0000001110000011111111 speichern wir den Startwert und danach nur die LauflÃ¤ngen. Nach jedem Lauf wechselt der Wert zwischen 0 und 1.
+Startwert Klicken oder tippen Sie hier, um Text einzugeben.   LauflÃ¤ngen Klicken oder tippen Sie hier, um Text einzugeben.   Kontrolle durch ZurÃ¼cklesen
+Klicken oder tippen Sie hier, um Text einzugeben.
+Codiere jede Pixelzeile einzeln. W bedeutet Weiss, B Blau und R Rot. Die Leerzeichen dienen hier nur der Lesbarkeit und werden nicht codiert.
+Pixelzeile
+RLE-Code
+W W W B B B B B
+R R R R W W B B
+W B W B W B W B
+Welche Pixelzeile eignet sich am schlechtesten? Warum?
+Klicken oder tippen Sie hier, um Text einzugeben.
+Zusatz B LZW selbst durchfÃ¼hren
+Starte mit einem neuen WÃ¶rterbuch A=1 und B=2. Codiere ABABAB. Verwende die Regel aus Experiment 5. Notiere jeden Resttext und die neuen EintrÃ¤ge auf einem Zusatzblatt.
+Meine Ausgabecodes Klicken oder tippen Sie hier, um Text einzugeben.
+Zusatz C ZIP untersuchen
+Ã–ffne im Editor eine neue Datei. Tippe M114-TEST-M114-TEST-M114-TEST. DrÃ¼cke Enter. Kopiere und fÃ¼ge die ganze Zeile mindestens 30-mal ein. Speichere als Muster.txt.
+Miss im Explorer Ã¼ber Rechtsklick > Eigenschaften die GrÃ¶sse in Bytes, nicht GrÃ¶sse auf DatentrÃ¤ger. Rechtsklick auf Muster.txt > In ZIP-Datei komprimieren oder Senden an > ZIP-komprimierter Ordner.
+Miss die GrÃ¶sse des ganzen ZIP-Archivs. Notiere beide Werte. Kannst du allein daraus sicher erkennen, welches interne Verfahren verwendet wurde?
+Vorher Klicken oder tippen Sie hier, um Text einzugeben. Bytes   ZIP Klicken oder tippen Sie hier, um Text einzugeben. Bytes   Antwort und BegrÃ¼ndung
+Klicken oder tippen Sie hier, um Text einzugeben.
