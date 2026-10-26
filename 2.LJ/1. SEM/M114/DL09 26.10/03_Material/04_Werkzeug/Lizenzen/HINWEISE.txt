@@ -1,0 +1,8 @@
+Dieses Werkzeug nutzt LAME (https://lame.sourceforge.net/) und lamejs 1.2.1 von Alex Zhukov unter LGPL-3.0.
+Projekt: https://github.com/zhuker/lamejs
+
+Lokale Änderung vom 24.10.2026: Ausgangs-Samplingrate explizit auf die Eingangs-Samplingrate festgelegt. Dadurch bleibt beim 64-kbit/s-Vergleich dieselbe Samplingrate erhalten.
+Die Änderung wird unter LGPL-3.0 bereitgestellt. Enthalten sind das Original-Quellarchiv, die geänderte Quelldatei und der Patch.
+Die separat geladene Datei lib/lame.min.js darf untersucht, ersetzt und entsprechend der Lizenz verändert werden.
+
+Änderung im ausführbaren Bundle: q.in_samplerate=k;q.brate=n; wird zu q.in_samplerate=k;q.out_samplerate=k;q.brate=n;

@@ -1,0 +1,10 @@
+--- src/js/index.js
++++ src/js/index.js
+@@ -101,6 +101,7 @@
+ 
+     gfp.num_channels = channels;
+     gfp.in_samplerate = samplerate;
++    gfp.out_samplerate = samplerate;
+     gfp.brate = kbps;
+     gfp.mode = MPEGMode.STEREO;
+     gfp.quality = 3;

@@ -1,0 +1,15 @@
+Prüfe diesen erfundenen Bildversuch:
+
+Eine Gruppe speichert ein Foto als PNG mit 1200 × 800 Pixeln.
+Sie erzeugt ausserdem ein JPEG mit 600 × 400 Pixeln.
+
+Das PNG betrachtet sie bei 100 % Zoom.
+Das JPEG betrachtet sie bei 200 % Zoom.
+
+Die Gruppe sagt:
+«Das JPEG sieht schlechter aus. Das liegt nur an JPEG.»
+
+1. Welche Bedingungen wurden gleichzeitig verändert?
+2. Warum ist die Schlussfolgerung nicht zuverlässig?
+3. Beschreibe einen fairen Vergleich in drei kurzen Schritten.
+4. Erfinde keine Beobachtungen zu den Bildern.

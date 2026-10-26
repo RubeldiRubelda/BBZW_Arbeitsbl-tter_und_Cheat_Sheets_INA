@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Pruefungsvorbereitung")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e6fbfd86ec21d19f76c8f186baa353324ef9bdbb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+949517b8f786cedc3010889e521299a02cf1b1cb")]
 [assembly: System.Reflection.AssemblyProductAttribute("Pruefungsvorbereitung")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Pruefungsvorbereitung")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

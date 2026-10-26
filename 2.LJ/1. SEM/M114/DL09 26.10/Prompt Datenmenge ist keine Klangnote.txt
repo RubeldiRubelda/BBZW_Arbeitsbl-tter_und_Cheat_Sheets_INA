@@ -1,0 +1,18 @@
+Rechne mit diesem erfundenen Beispiel:
+
+Eine Aufnahme dauert genau 60 Sekunden.
+Zwei MP3-Dateien verwenden eine konstante Bitrate:
+192 kbit/s und 64 kbit/s.
+
+Verwende:
+1 kbit = 1000 Bits
+8 Bits = 1 Byte
+1 kB = 1000 Bytes
+
+Zusätzliche Dateiangaben lassen wir für die Schätzung weg.
+
+1. Berechne die ungefähre Datenmenge beider Dateien in kB.
+2. Vergleiche die beiden Datenmengen.
+3. Prüfe diese Aussage:
+   «Die kleinere Datei hat nur ein Drittel der Klangqualität.»
+4. Erkläre, wie wir die Klangqualität fair vergleichen können.
