@@ -1,0 +1,14 @@
+L:\home\benjamin\Documents\Module\SEM 3\M320\04 Vertiefungsarbeit\Vertiefungsarbeit4\bin\Debug\net10.0\Vertiefungsarbeit4.exe
+L:\home\benjamin\Documents\Module\SEM 3\M320\04 Vertiefungsarbeit\Vertiefungsarbeit4\bin\Debug\net10.0\Vertiefungsarbeit4.deps.json
+L:\home\benjamin\Documents\Module\SEM 3\M320\04 Vertiefungsarbeit\Vertiefungsarbeit4\bin\Debug\net10.0\Vertiefungsarbeit4.runtimeconfig.json
+L:\home\benjamin\Documents\Module\SEM 3\M320\04 Vertiefungsarbeit\Vertiefungsarbeit4\bin\Debug\net10.0\Vertiefungsarbeit4.dll
+L:\home\benjamin\Documents\Module\SEM 3\M320\04 Vertiefungsarbeit\Vertiefungsarbeit4\bin\Debug\net10.0\Vertiefungsarbeit4.pdb
+L:\home\benjamin\Documents\Module\SEM 3\M320\04 Vertiefungsarbeit\Vertiefungsarbeit4\obj\Debug\net10.0\Vertiefungsarbeit4.GeneratedMSBuildEditorConfig.editorconfig
+L:\home\benjamin\Documents\Module\SEM 3\M320\04 Vertiefungsarbeit\Vertiefungsarbeit4\obj\Debug\net10.0\Vertiefungsarbeit4.AssemblyInfoInputs.cache
+L:\home\benjamin\Documents\Module\SEM 3\M320\04 Vertiefungsarbeit\Vertiefungsarbeit4\obj\Debug\net10.0\Vertiefungsarbeit4.AssemblyInfo.cs
+L:\home\benjamin\Documents\Module\SEM 3\M320\04 Vertiefungsarbeit\Vertiefungsarbeit4\obj\Debug\net10.0\Vertiefungsarbeit4.csproj.CoreCompileInputs.cache
+L:\home\benjamin\Documents\Module\SEM 3\M320\04 Vertiefungsarbeit\Vertiefungsarbeit4\obj\Debug\net10.0\Vertiefungsarbeit4.dll
+L:\home\benjamin\Documents\Module\SEM 3\M320\04 Vertiefungsarbeit\Vertiefungsarbeit4\obj\Debug\net10.0\refint\Vertiefungsarbeit4.dll
+L:\home\benjamin\Documents\Module\SEM 3\M320\04 Vertiefungsarbeit\Vertiefungsarbeit4\obj\Debug\net10.0\Vertiefungsarbeit4.pdb
+L:\home\benjamin\Documents\Module\SEM 3\M320\04 Vertiefungsarbeit\Vertiefungsarbeit4\obj\Debug\net10.0\Vertiefungsarbeit4.genruntimeconfig.cache
+L:\home\benjamin\Documents\Module\SEM 3\M320\04 Vertiefungsarbeit\Vertiefungsarbeit4\obj\Debug\net10.0\ref\Vertiefungsarbeit4.dll

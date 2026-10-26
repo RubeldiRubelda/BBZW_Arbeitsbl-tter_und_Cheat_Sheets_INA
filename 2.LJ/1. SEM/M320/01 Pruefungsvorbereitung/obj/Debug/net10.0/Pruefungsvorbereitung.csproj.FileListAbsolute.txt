@@ -1,0 +1,14 @@
+d:\Module\SEM 3\M320\Pruefungsvorbereitung\bin\Debug\net10.0\Pruefungsvorbereitung.exe
+d:\Module\SEM 3\M320\Pruefungsvorbereitung\bin\Debug\net10.0\Pruefungsvorbereitung.deps.json
+d:\Module\SEM 3\M320\Pruefungsvorbereitung\bin\Debug\net10.0\Pruefungsvorbereitung.runtimeconfig.json
+d:\Module\SEM 3\M320\Pruefungsvorbereitung\bin\Debug\net10.0\Pruefungsvorbereitung.dll
+d:\Module\SEM 3\M320\Pruefungsvorbereitung\bin\Debug\net10.0\Pruefungsvorbereitung.pdb
+d:\Module\SEM 3\M320\Pruefungsvorbereitung\obj\Debug\net10.0\Pruefungsvorbereitung.GeneratedMSBuildEditorConfig.editorconfig
+d:\Module\SEM 3\M320\Pruefungsvorbereitung\obj\Debug\net10.0\Pruefungsvorbereitung.AssemblyInfoInputs.cache
+d:\Module\SEM 3\M320\Pruefungsvorbereitung\obj\Debug\net10.0\Pruefungsvorbereitung.AssemblyInfo.cs
+d:\Module\SEM 3\M320\Pruefungsvorbereitung\obj\Debug\net10.0\Pruefungsvorbereitung.csproj.CoreCompileInputs.cache
+d:\Module\SEM 3\M320\Pruefungsvorbereitung\obj\Debug\net10.0\Pruefungsvorbereitung.dll
+d:\Module\SEM 3\M320\Pruefungsvorbereitung\obj\Debug\net10.0\refint\Pruefungsvorbereitung.dll
+d:\Module\SEM 3\M320\Pruefungsvorbereitung\obj\Debug\net10.0\Pruefungsvorbereitung.pdb
+d:\Module\SEM 3\M320\Pruefungsvorbereitung\obj\Debug\net10.0\Pruefungsvorbereitung.genruntimeconfig.cache
+d:\Module\SEM 3\M320\Pruefungsvorbereitung\obj\Debug\net10.0\ref\Pruefungsvorbereitung.dll
