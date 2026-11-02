@@ -1,0 +1,155 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="uml-vehicle" name="UML Assoziationen">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="700" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Vehicle (abstract) -->
+        <mxCell id="vehicle" value="Vehicle" style="swimlane;fontStyle=3;align=center;startSize=26;horizontal=1;collapsible=0;marginBottom=0;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="300" y="40" width="280" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="vehicle_a1" value="+ Name: string" style="text;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;" vertex="1" parent="vehicle">
+          <mxGeometry y="26" width="280" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="vehicle_sep" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;rotatable=0;" vertex="1" parent="vehicle">
+          <mxGeometry y="46" width="280" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="vehicle_m1" value="# Vehicle(name: string)" style="text;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;" vertex="1" parent="vehicle">
+          <mxGeometry y="54" width="280" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="vehicle_m2" value="+ Drive(): string {abstract}" style="text;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontStyle=2;" vertex="1" parent="vehicle">
+          <mxGeometry y="74" width="280" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="vehicle_m3" value="+ Describe(): string" style="text;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;" vertex="1" parent="vehicle">
+          <mxGeometry y="94" width="280" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Car -->
+        <mxCell id="car" value="Car" style="swimlane;fontStyle=1;align=center;startSize=26;horizontal=1;collapsible=0;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="40" y="300" width="280" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="car_a1" value="- _engine: Engine" style="text;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;" vertex="1" parent="car">
+          <mxGeometry y="26" width="280" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="car_sep" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;rotatable=0;" vertex="1" parent="car">
+          <mxGeometry y="46" width="280" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="car_m1" value="+ Car(name: string, horsepower: int)" style="text;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;" vertex="1" parent="car">
+          <mxGeometry y="54" width="280" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="car_m2" value="+ Drive(): string" style="text;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;" vertex="1" parent="car">
+          <mxGeometry y="74" width="280" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="car_m3" value="+ Describe(): string" style="text;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;" vertex="1" parent="car">
+          <mxGeometry y="94" width="280" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Bicycle -->
+        <mxCell id="bicycle" value="Bicycle" style="swimlane;fontStyle=1;align=center;startSize=26;horizontal=1;collapsible=0;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="560" y="300" width="280" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="bicycle_a1" value="+ NumberOfGears: int" style="text;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;" vertex="1" parent="bicycle">
+          <mxGeometry y="26" width="280" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="bicycle_sep" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;rotatable=0;" vertex="1" parent="bicycle">
+          <mxGeometry y="46" width="280" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="bicycle_m1" value="+ Bicycle(name: string, gears: int)" style="text;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;" vertex="1" parent="bicycle">
+          <mxGeometry y="54" width="280" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="bicycle_m2" value="+ Drive(): string" style="text;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;" vertex="1" parent="bicycle">
+          <mxGeometry y="74" width="280" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Engine -->
+        <mxCell id="engine" value="Engine" style="swimlane;fontStyle=1;align=center;startSize=26;horizontal=1;collapsible=0;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="40" y="540" width="280" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="engine_a1" value="+ Horsepower: int" style="text;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;" vertex="1" parent="engine">
+          <mxGeometry y="26" width="280" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="engine_sep" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;rotatable=0;" vertex="1" parent="engine">
+          <mxGeometry y="46" width="280" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="engine_m1" value="+ Engine(horsepower: int)" style="text;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;" vertex="1" parent="engine">
+          <mxGeometry y="54" width="280" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Garage -->
+        <mxCell id="garage" value="Garage" style="swimlane;fontStyle=1;align=center;startSize=26;horizontal=1;collapsible=0;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="720" y="40" width="300" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="garage_a1" value="- _vehicles: List&lt;Vehicle&gt;" style="text;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;" vertex="1" parent="garage">
+          <mxGeometry y="26" width="300" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="garage_a2" value="+ Location: string" style="text;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;" vertex="1" parent="garage">
+          <mxGeometry y="46" width="300" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="garage_sep" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;rotatable=0;" vertex="1" parent="garage">
+          <mxGeometry y="66" width="300" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="garage_m1" value="+ Garage(location: string)" style="text;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;" vertex="1" parent="garage">
+          <mxGeometry y="74" width="300" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="garage_m2" value="+ Park(vehicle: Vehicle): void" style="text;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;" vertex="1" parent="garage">
+          <mxGeometry y="94" width="300" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="garage_m3" value="+ ShowContents(): void" style="text;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;" vertex="1" parent="garage">
+          <mxGeometry y="114" width="300" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Vererbung: Car -> Vehicle -->
+        <mxCell id="gen_car" value="" style="endArrow=block;endFill=0;endSize=14;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="car" target="vehicle">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Vererbung: Bicycle -> Vehicle -->
+        <mxCell id="gen_bike" value="" style="endArrow=block;endFill=0;endSize=14;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="bicycle" target="vehicle">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Komposition: Car 1 ◆—— 1 Engine -->
+        <mxCell id="comp" value="" style="endArrow=none;startArrow=diamondThin;startFill=1;startSize=16;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="car" target="engine">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_l1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="comp">
+          <mxGeometry x="-0.7" y="1" relative="1" as="geometry">
+            <mxPoint x="14" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="comp_l2" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="comp">
+          <mxGeometry x="0.7" y="1" relative="1" as="geometry">
+            <mxPoint x="14" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="comp_l3" value="- _engine" style="edgeLabel;html=1;align=left;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="comp">
+          <mxGeometry x="0.4" y="1" relative="1" as="geometry">
+            <mxPoint x="30" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Aggregation: Garage 0..1 ◇—— 0..* Vehicle -->
+        <mxCell id="agg" value="" style="endArrow=none;startArrow=diamondThin;startFill=0;startSize=16;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="garage" target="vehicle">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="agg_l1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="agg">
+          <mxGeometry x="-0.6" relative="1" as="geometry">
+            <mxPoint y="-12" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="agg_l2" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="agg">
+          <mxGeometry x="0.6" relative="1" as="geometry">
+            <mxPoint y="-12" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="agg_l3" value="_vehicles" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="agg">
+          <mxGeometry x="0" relative="1" as="geometry">
+            <mxPoint y="12" as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
