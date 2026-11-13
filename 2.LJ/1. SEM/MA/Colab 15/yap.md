@@ -34,6 +34,8 @@ Dies ist ein Zeichen für eine Überanpassung, bei der das Modell nicht mehr ler
 | Optimale Parameter   | Gute Generalisierung   |
 | Falsche Lernrate     | Instabiles Training    |
 
+
+
 Wiederholungsfragen ❓
 Warum ist es wichtig, die Trainingsdaten während des Lernprozesses zu mischen?
 Hinweis: Grundlagen des Trainingsprozesses
